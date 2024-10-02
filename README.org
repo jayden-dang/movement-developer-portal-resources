@@ -10,3 +10,7 @@ A collection of Move language code examples and developer portal sample implemen
 
 - [[./sources/basic][Get started]]
   - [[./sources/basic/data_type][Data Type]]
+
+| Main        | Topic                                    | Description |
+| [[./sources/basic][Get started]] | [[./sources/basic/data_type][Data Type]] |             |
+|             |                                          |             |
