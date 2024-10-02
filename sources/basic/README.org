@@ -36,7 +36,7 @@ module movement::hello_world {
 
 - Running test on terminal:
 #+begin_src sh
-aptos move test --filter hello_world
+aptos move test -f hello_world
 #+end_src
 
 #+begin_src sh
@@ -107,7 +107,7 @@ module movement::integer_module {
 
 - Execute test in the terminal
 #+begin_src sh
-aptos move test  --filter integer_module
+aptos move test  -f integer_module
 #+end_src
 
 #+begin_src move
@@ -167,7 +167,7 @@ module movement::boolean_type {
 
 - Run test on terminal
 #+begin_src sh :results output :session share :async true
-aptos move test --filter boolean_type
+aptos move test -f boolean_type
 #+end_src
 
 #+begin_src sh
@@ -282,7 +282,7 @@ module movement::address_and_signer {
 
 - Running test
 #+begin_src sh
-aptos move test --filter address_and_signer
+aptos move test -f address_and_signer
 #+end_src
 
 #+begin_src sh
@@ -310,7 +310,7 @@ This document covers the fundamentals of working with vectors and strings in Mov
 - =vector<T>= is the only collection type provided by Move. A =vector<T>= is a homogeneous collection of T values that can be expanded or shrunk by adding/removing values from its "end".
 - A =vector<T>= can be initialized with any data type as T. For example, =vector<u8>=, =vector<address>=, =vector<0x42::MovementModule::ResourceType>=, and =vector<vector<u8>>=
 
-#+begin_src move
+#+begin_src rust
 let byte_string_example: vector<u8> = b"Hello world"; //Byte strings are quoted string literals prefixed by a b
 let hex_string_example: vector<u8> = x"48656c6c6f20776f726c64"; //Hex strings are quoted string literals prefixed by a x
 #+end_src
@@ -461,6 +461,27 @@ module movement::vector_type {
 }
 #+end_src
 
+- Running test on terminal:
+#+begin_src sh
+aptos move test -f vector_type
+#+end_src
+
+#+begin_src sh
+Running Move unit tests
+[debug] [
+  0x1::vector_type::DropVector {
+    data: 10
+  }
+]
+[ PASS ] 0x1::vector_type::test_add_vector
+[ PASS ] 0x1::vector_type::test_failed_drop_vector
+[ PASS ] 0x1::vector_type::test_success_drop_vector
+Test result: OK. Total tests: 3; passed: 3; failed: 0
+{
+  "Result": "Success"
+}
+#+end_src
+
 **** Copy a vector
 Similarly, vectors cannot be copied (using =copy=) unless the element type has the =copy= capability. In other words, a =vector<T>= is copyable only if =T= has the.
 
@@ -516,7 +537,7 @@ module movement::vector_type {
 | =vector::swap_remove<T>(v: &mut vector<T>, i: u64): T= | Swap the =i=th element of the vector =v= with the last element and then pop the element, This is O(1), but does not preserve ordering of elements in the vector | If =i= is out of bounds |
 
 *** Overview String
-In Move, String is not a native data type. Data in the Move VM is stored as bytes, so when using a string, the essence of the string will be a vector<u8>, a sequence of characters encoded as bytes arranged adjacently to create a string
+In Move, String is not a native data type. Data in the MoveVM is stored as bytes, so when using a string, the essence of the string will be a =vector<u8=>, a sequence of characters encoded as bytes arranged adjacently to create a string
 
 #+begin_src move
 module movement::string_type {
@@ -537,6 +558,23 @@ module movement::string_type {
     fun test_vec_string() {
         vec_string()
     }
+}
+#+end_src
+
+- Running test on Terminal:
+#+begin_src sh
+aptos move test -f string_type
+#+end_src
+
+#+begin_src sh
+Running Move unit tests
+[debug] 0x48656c6c6f20627920766563746f72207538
+[debug] "Hello by String"
+[debug] "Hello by vector u8"
+[ PASS ] 0x1::string_type::test_vec_string
+Test result: OK. Total tests: 1; passed: 1; failed: 0
+{
+  "Result": "Success"
 }
 #+end_src
 
