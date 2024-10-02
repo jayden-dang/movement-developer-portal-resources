@@ -633,6 +633,28 @@ module movement::simple_map_module {
 }
 #+end_src
 
+- Running test on Termial:
+#+begin_src sh
+aptos move test -f simple_map_module
+#+end_src
+
+#+begin_src sh
+Running Move unit tests
+[debug] 0x1::simple_map::SimpleMap<address, u64> {
+  data: [
+    0x1::simple_map::Element<address, u64> {
+      key: @0x1,
+      value: 10
+    }
+  ]
+}
+[ PASS    ] 0x1::simple_map_module::test_map_in_move
+Test result: OK. Total tests: 1; passed: 1; failed: 0
+{
+  "Result": "Success"
+}
+#+end_src
+
 *** Additional SimpleMap Functions
 
 | **Function** | **Description** | **Return Value** |
