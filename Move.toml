@@ -4,10 +4,10 @@ version = "1.0.0"
 authors = [
   "Jayden Dang <jayden.vu@movementlabs.xyz>"
 ]
-license = "Apache-2.0"
+license = "MIT"
 
 [addresses]
-movement = "0x1"
+movement = "0xc103109311944d8bae02fccf9273dcb4615be30653e85aec628f04b6ddd00fef"
 
 [dev-addresses]
 
