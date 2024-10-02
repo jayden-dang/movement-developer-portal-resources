@@ -7,3 +7,5 @@
 #+begin_quote
 A collection of Move language code examples and developer portal sample implementations. Includes smart contract snippets, blockchain operations, API documentation templates, and interactive components for building developer tools.
 #+end_quote
+
+- [[./sources/basic][Get started]]
