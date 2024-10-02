@@ -9,7 +9,18 @@ A collection of Move language code examples and developer portal sample implemen
 #+end_quote
 
 - [[./sources/basic][Get started]]
-  - [[./sources/basic/data_type][Data Type]]
+  + [[./sources/basic/data_type][Data Type]]
+    + Integer
+    + Boolean
+    + Address & Signer
+    + String & Vector
+    + Simple Map
+  + Functions, view Functions & Visibilities
+  + Resources on Move & Ability of Resource
+  + Conditionals & loops
+  + Constants & Error Handling
+  + Generics Type & Phantom Type
+  + Unit Testing
 
 | Main        | Topic                                    | Description |
 | [[./sources/basic][Get started]] | [[./sources/basic/data_type][Data Type]] |             |
