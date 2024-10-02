@@ -17,11 +17,18 @@ A collection of Move language code examples and developer portal sample implemen
     + Simple Map
   + Functions, view Functions & Visibilities
   + Resources on Move & Ability of Resource
-  + Conditionals & loops
+  + Conditionals & Loops
   + Constants & Error Handling
   + Generics Type & Phantom Type
   + Unit Testing
 
 | Main        | Topic                                    | Description |
-| [[./sources/basic][Get started]] | [[./sources/basic/data_type][Data Type]] |             |
-|             |                                          |             |
+| [[./sources/basic][Get started]] | [[./sources/basic/data_type][Data Type]]                                |             |
+|             | Functions, view Functions & Visibilities |             |
+|             | Resources on Move & Ability of Resource  |             |
+|             | Conditionals & Loops                     |             |
+|             | Constants & Error Handling               |             |
+|             | Generics Types & Phantom Type            |             |
+|             | Unit Testing                            |             |
+
+... Update
