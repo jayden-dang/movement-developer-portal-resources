@@ -2,7 +2,7 @@
 
 * Table of Content
 - [[#hello-world-contract][Hello world Contract]]
-- [[#data-types][Data Types]]
+- [[./data_type][Data Types]]
 - [[./functions_visibilities/][Functions, view Functions & Visibilities]]
 
 * Hello world Contract
@@ -44,10 +44,3 @@ Test result: OK. Total tests: 1; passed: 1; failed: 0
   "Result": "Success"
 }
 #+end_src
-
-* Data Types
-This part provides a comprehensive overview of fundamental data types in the Move programming language. It covers =integers=, =booleans=, =addresses=, =signers=, =strings=, =vectors=, and =simple maps=. For each type, the document explains their characteristics, usage, and provides code examples with explanations. The content includes detailed summaries, syntax explanations, and practical demonstrations of how to work with these data types in Move. Additionally, it offers insights into type-specific operations, potential pitfalls, and best practices for efficient programming in Move.
-
-#+begin_quote
-[[./data_type/README.org][See Here]]
-#+end_quote
