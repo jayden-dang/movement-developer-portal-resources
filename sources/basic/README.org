@@ -1,11 +1,12 @@
 #+TITLE: Basic Collection Resource
 
 * Table of Content :TOC:
-  - [[#contract][Contract]]
+- [[#contract][Contract]]
+  - [[#hello-world-contract][Hello world Contract]]
   - [[#integer][Integer]]
 
-** Contract
-*** Hello world
+* Contract
+** Hello world Contract
 #+begin_src move
 module movement::hello_world {
     struct MoveResource has key {
@@ -54,7 +55,9 @@ fun plus_two_types(): u64 {
 }
 #+end_src
 
-> One of the things to pay attention to when using type casting, like the code above, is that we should only cast smaller types to larger types, and not the other way around. This helps to limit the risk of overflow.
+#+begin_quote
+One of the things to pay attention to when using type casting, like the code above, is that we should only cast smaller types to larger types, and not the other way around. This helps to limit the risk of overflow.
+#+end_quote
 
 *** Code Start
 This code defines a module in Move language that includes a function plus_two_types, which adds a u8 and a u64 after converting the u8 to u64. The module also contains a test function test_plus_two_types that verifies the addition operation.
@@ -75,18 +78,16 @@ module movement::integer_module {
 }
 #+end_src
 
-> Execute test in the terminal
-
-
+- Execute test in the terminal
 #+begin_src sh
 aptos move test
 #+end_src
 
-#+begin_src json
+#+begin_src move
 [debug] 105
 [ PASS ] 0xdb8a45e0e06d2bd305cdb824fda101cec6a24721cb03188c5543a5e5a8c3f3b0::integer_module::test_plus_two_types
 Test result: OK. Total tests: 1; passed: 1; failed: 0
 {
-"Result": "Success"
+  "Result": "Success"
 }
 #+end_src
