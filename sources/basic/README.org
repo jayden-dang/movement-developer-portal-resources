@@ -23,17 +23,16 @@ module movement::hello_world {
 
 ** Integer
 *** Summary
-- Move supports six unsigned integer types: u8, u16, u32, u64, u128, and u256.
+- Move supports six unsigned integer types: =u8=, =u16=, =u32=, =u64=, =u128=, and =u256=.
 - Direct mathematical operations between different integer types are not allowed.
 - Type casting is necessary when performing operations with different integer types.
 - It's recommended to cast smaller types to larger types to avoid overflow risks.
-- The module demonstrates adding a u8 and a u64 by converting u8 to u64.
+- The module demonstrates adding a =u8= and a =u64= by converting =u8= to =u64=.
 - A test function verifies the addition operation.
 - The code can be tested using the Move test command.
 
 *** Overview
-Move supports six unsigned integer types: `u8`, `u16`, `u32`, `u64`, `u128`, and `u256`. Values of these types range from 0 to a maximum that depends on the size of the type.
-
+Move supports six unsigned integer types: =u8=, =u16=, =u32=, =u64=, =u128=, and =u256=. Values of these types range from 0 to a maximum that depends on the size of the type.
 Although math can be done easily among integers of the same type, it's not possible to do math directly between integers of different type
 
 #+begin_src move
@@ -60,7 +59,7 @@ One of the things to pay attention to when using type casting, like the code abo
 #+end_quote
 
 *** Code Start
-This code defines a module in Move language that includes a function plus_two_types, which adds a u8 and a u64 after converting the u8 to u64. The module also contains a test function test_plus_two_types that verifies the addition operation.
+This code defines a module in Move language that includes a function =plus_two_types=, which adds a =u8= and a =u64= after converting the =u8= to =u64=. The module also contains a test function =test_plus_two_types= that verifies the addition operation.
 
 #+begin_src move
 module movement::integer_module {
