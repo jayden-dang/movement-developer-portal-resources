@@ -118,7 +118,7 @@ In programming, Boolean types are used to represent truth values. They are funda
 
 *** Declaring Boolean Variables
 You can declare Boolean variables using the bool type. Here’s how to do it:
-#+begin_src move
+#+begin_src rust
 let a: bool = true;   // Declaration of a Boolean variable with value true
 let b: bool = false;  // Declaration of a Boolean variable with value false
 #+end_src
