@@ -9,3 +9,4 @@ A collection of Move language code examples and developer portal sample implemen
 #+end_quote
 
 - [[./sources/basic][Get started]]
+  - [[./sources/basic/data_type][Data Type]]
