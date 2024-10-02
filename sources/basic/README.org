@@ -1,0 +1,20 @@
+#+TITLE: Basic Collection Resource
+
+* Table of Content :TOC:
+  - [[#contract][Contract]]
+
+** Contract
+*** Hello world
+#+begin_src move
+module movement::hello_world {
+    struct MoveResource has key {
+        value: u64
+    }
+
+    fun init_module(caller: &signer) {
+        move_to(caller, MoveResource {
+            value: 10
+        });
+    }
+}
+#+end_src
