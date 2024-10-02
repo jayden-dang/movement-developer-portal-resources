@@ -7,10 +7,9 @@ authors = [
 license = "Apache-2.0"
 
 [addresses]
-# movement = "0x1"
+movement = "0x1"
 
 [dev-addresses]
-movement = "0xCAFE"
 
 [dependencies.AptosFramework]
 git = "https://github.com/aptos-labs/aptos-core.git"
