@@ -124,6 +124,10 @@ Test result: OK. Total tests: 3; passed: 3; failed: 0
 }
 #+end_src
 
+#+begin_quote
+[[./data_type/integer_type.move][Full Code]]
+#+end_quote
+
 ** Boolean
 *** Summary
 - Boolean is a primitive data type in Move representing =true= or =false= values
