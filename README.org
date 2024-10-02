@@ -30,5 +30,3 @@ A collection of Move language code examples and developer portal sample implemen
 |             | Constants & Error Handling               |             |
 |             | Generics Types & Phantom Type            |             |
 |             | Unit Testing                            |             |
-
-... Update

@@ -191,6 +191,9 @@ To distinguish when an address is being used in the context of an expression or 
 *** Declaring Address Variables
 #+begin_src move
 let addr1: address = @0x1;      //numerical address example
+#+end_src
+
+#+begin_src move
 let addr2: address = @my_addrx; //named address example
 #+end_src
 
