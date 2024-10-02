@@ -1,16 +1,15 @@
 #+TITLE: Basic Collection Resource
 
 * Table of Content :TOC:
-- [[#contents][Contents]]
-  - [[#hello-world-contract][Hello world Contract]]
+- [[#hello-world-contract][Hello world Contract]]
+- [[#data-types][Data Types]]
   - [[#integer][Integer]]
   - [[#boolean][Boolean]]
   - [[#address--signer][Address & Signer]]
   - [[#string--vector][String & Vector]]
   - [[#map-simple-map][Map (Simple Map)]]
 
-* Contents
-** Hello world Contract
+* Hello world Contract
 #+begin_src move
 module movement::hello_world {
     use std::string::{String, utf8};
@@ -50,6 +49,7 @@ Test result: OK. Total tests: 1; passed: 1; failed: 0
 }
 #+end_src
 
+* Data Types
 ** Integer
 *** Summary
 - Move supports six unsigned integer types: =u8=, =u16=, =u32=, =u64=, =u128=, and =u256=.
