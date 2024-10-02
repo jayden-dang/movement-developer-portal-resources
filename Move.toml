@@ -1,7 +1,10 @@
 [package]
 name = "developer_portal"
 version = "1.0.0"
-authors = []
+authors = [
+  "Jayden Dang <jayden.vu@movementlabs.xyz>"
+]
+license = "Apache-2.0"
 
 [addresses]
 movement = "0x1"

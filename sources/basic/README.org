@@ -1,12 +1,12 @@
 #+TITLE: Basic Collection Resource
 
 * Table of Content :TOC:
-- [[#contract][Contract]]
+- [[#contents][Contents]]
   - [[#hello-world-contract][Hello world Contract]]
   - [[#integer][Integer]]
   - [[#boolean][Boolean]]
 
-* Contract
+* Contents
 ** Hello world Contract
 #+begin_src move
 module movement::hello_world {
