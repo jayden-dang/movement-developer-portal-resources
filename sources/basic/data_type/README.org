@@ -498,22 +498,22 @@ module movement::vector_type {
 - Copying large =vectors= can be *expensive*, so the compiler requires explicit copies to make it easy to see where they occur.
 
 *** Additional Vector Functions
-| Function | Description | Aborts? |
-| --- | --- | --- |
-| =vector::empty<T>(): vector<T>= | Create an empty vector that can store values of type =T= | Never |
-| =vector::singleton<T>(t: T): vector<T>= | Create a vector of size 1 containing =t= | Never |
-| =vector::push_back<T>(v: &mut vector<T>, t: T)= | Add =t= to the end of =v= | Never |
-| =vector::pop_back<T>(v: &mut vector<T>): T= | Remove and return the last element in =v= | If =v= is empty |
-| =vector::borrow<T>(v: &vector<T>, i: u64): &T= | Return an immutable reference to the =T= at index =i= | If =i= is not in bounds |
-| =vector::borrow_mut<T>(v: &mut vector<T>, i: u64): &mut T= | Return a mutable reference to the =T= at index =i= | If =i= is not in bounds |
-| =vector::destroy_empty<T>(v: vector<T>)= | Delete =v= | If =v= is not empty |
-| =vector::append<T>(v1: &mut vector<T>, v2: vector<T>)= | Add the elements in =v2= to the end of =v1= | Never |
-| =vector::contains<T>(v: &vector<T>, e: &T): bool= | Return true if =e= is in the vector =v=. Otherwise, returns false | Never |
-| =vector::swap<T>(v: &mut vector<T>, i: u64, j: u64)= | Swaps the elements at the =i=th and =j=th indices in the vector =v= | If =i= or =j= is out of bounds |
-| =vector::reverse<T>(v: &mut vector<T>)= | Reverses the order of the elements in the vector =v= in place | Never |
-| =vector::index_of<T>(v: &vector<T>, e: &T): (bool, u64)= | Return =(true, i)= if =e= is in the vector =v= at index =i=. Otherwise, returns =(false, 0)= | Never |
-| =vector::remove<T>(v: &mut vector<T>, i: u64): T= | Remove the =i=th element of the vector =v=, shifting all subsequent elements. This is O(n) and preserves ordering of elements in the vector | If =i= is out of bounds |
-| =vector::swap_remove<T>(v: &mut vector<T>, i: u64): T= | Swap the =i=th element of the vector =v= with the last element and then pop the element, This is O(1), but does not preserve ordering of elements in the vector | If =i= is out of bounds |
+| Function                                                 | Description                                                                                                           | Aborts?                    |
+| ---                                                      | ---                                                                                                                   | ---                        |
+| =vector::empty<T>(): vector<T>=                            | Create an empty vector that can store values of type =T=                                                                | Never                      |
+| =vector::singleton<T>(t: T): vector<T>=                    | Create a vector of size 1 containing =t=                                                                                | Never                      |
+| =vector::push_back<T>(v: &mut vector<T>, t: T)=            | Add =t= to the end of =v=                                                                                                 | Never                      |
+| =vector::pop_back<T>(v: &mut vector<T>): T=                | Remove and return the last element in =v=                                                                               | If =v= is empty              |
+| =vector::borrow<T>(v: &vector<T>, i: u64): &T=             | Return an immutable reference to the =T= at index =i=                                                                     | If =i= is not in bounds      |
+| =vector::borrow_mut<T>(v: &mut vector<T>, i: u64): &mut T= | Return a mutable reference to the =T= at index =i=                                                                        | If =i= is not in bounds      |
+| =vector::destroy_empty<T>(v: vector<T>)=                   | Delete =v=                                                                                                              | If =v= is not empty          |
+| =vector::append<T>(v1: &mut vector<T>, v2: vector<T>)=     | Add the elements in =v2= to the end of =v1=                                                                               | Never                      |
+| =vector::contains<T>(v: &vector<T>, e: &T): bool=          | Return true if =e= is in the vector =v=. Otherwise, returns false                                                         | Never                      |
+| =vector::swap<T>(v: &mut vector<T>, i: u64, j: u64)=       | Swaps the elements at the =i=th and =j=th indices in the vector =v=                                                       | If =i= or =j= is out of bounds |
+| =vector::reverse<T>(v: &mut vector<T>)=                    | Reverses the order of the elements in the vector =v= in place                                                           | Never                      |
+| =vector::index_of<T>(v: &vector<T>, e: &T): (bool, u64)=   | Return =(true, i)= if =e= is in the vector =v= at index =i=. Otherwise, returns =(false, 0)=                                    | Never                      |
+| =vector::remove<T>(v: &mut vector<T>, i: u64): T=          | Remove the =i=th element of the vector =v=, shifting all subsequent elements. This is O(n) and preserves ordering of elements in the vector | If =i= is out of bounds      |
+| =vector::swap_remove<T>(v: &mut vector<T>, i: u64): T=     | Swap the =i=th element of the vector =v= with the last element and then pop the element, This is O(1), but does not preserve ordering of elements in the vector | If =i= is out of bounds      |
 
 ** Overview String
 In Move, String is not a native data type. Data in the MoveVM is stored as bytes, so when using a string, the essence of the string will be a =vector<u8>=, a sequence of characters encoded as bytes arranged adjacently to create a string
@@ -637,22 +637,22 @@ Test result: OK. Total tests: 1; passed: 1; failed: 0
 
 ** Additional SimpleMap Functions
 
-| **Function** | **Description** | **Return Value** |
-| --- | --- | --- |
-| =length= | Gets the number of elements | =u64= |
-| =new= | Creates an empty SimpleMap | =SimpleMap<K, V>= |
-| =new_from= | Creates from key-value vectors | =SimpleMap<K, V>= |
-| =create= | Deprecated alias for=new= | =SimpleMap<K, V>= |
-| =borrow= | Borrows a value by key | =&V= |
-| =borrow_mut= | Mutably borrows a value by key | =&mut V= |
-| =contains_key= | Checks for key existence | =bool= |
-| =destroy_empty= | Destroys an empty map | None |
-| =add= | Adds a key-value pair | None |
-| =add_all= | Adds multiple key-value pairs | None |
-| =upsert= | Inserts or updates a pair | None |
-| =keys= | Gets all keys | =vector<K>= |
-| =values= | Gets all values | =vector<V>= |
-| =to_vec_pair= | Converts to key-value vectors | =(vector<K, V>)= |
-| =destroy= | Destroys map with lambdas | None |
-| =remove= | Removes and returns a pair | =(K, V)= |
-| =find= | Finds key index (internal) | =Option<u64>= |
+| **Function**    | **Description**                  | **Return Value**  |
+| ---           | ---                            | ---             |
+| =length=        | Gets the number of elements    | =u64=             |
+| =new=           | Creates an empty SimpleMap     | =SimpleMap<K, V>= |
+| =new_from=      | Creates from key-value vectors | =SimpleMap<K, V>= |
+| =create=        | Deprecated alias for=new=      | =SimpleMap<K, V>= |
+| =borrow=        | Borrows a value by key         | =&V=              |
+| =borrow_mut=    | Mutably borrows a value by key | =&mut V=          |
+| =contains_key=  | Checks for key existence       | =bool=            |
+| =destroy_empty= | Destroys an empty map          | None            |
+| =add=           | Adds a key-value pair          | None            |
+| =add_all=       | Adds multiple key-value pairs  | None            |
+| =upsert=        | Inserts or updates a pair      | None            |
+| =keys=          | Gets all keys                  | =vector<K>=       |
+| =values=        | Gets all values                | =vector<V>=       |
+| =to_vec_pair=   | Converts to key-value vectors  | =(vector<K, V>)=  |
+| =destroy=       | Destroys map with lambdas      | None            |
+| =remove=        | Removes and returns a pair     | =(K, V)=          |
+| =find=          | Finds key index (internal)     | =Option<u64>=     |

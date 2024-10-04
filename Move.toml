@@ -7,9 +7,10 @@ authors = [
 license = "MIT"
 
 [addresses]
-movement = "0xc103109311944d8bae02fccf9273dcb4615be30653e85aec628f04b6ddd00fef"
+movement = "0x696e90758094efbf0e2e9dc7fb9fbbde6c60d479bed1b1984cf62575fc864d96"
 
 [dev-addresses]
+# movement = "0x1"
 
 [dependencies.AptosFramework]
 git = "https://github.com/aptos-labs/aptos-core.git"

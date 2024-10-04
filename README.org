@@ -29,4 +29,4 @@ A collection of Move language code examples and developer portal sample implemen
 |             | Conditionals & Loops                     |             |
 |             | Constants & Error Handling               |             |
 |             | Generics Types & Phantom Type            |             |
-|             | Unit Testing                            |             |
+|             | Unit Testing                             |             |

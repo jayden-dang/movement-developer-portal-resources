@@ -6,7 +6,7 @@ module movement::hello_world {
         string: String
     }
 
-    fun init_module(caller: &signer) {
+    public entry fun create_first_resource(caller: &signer) {
         let greeting: String = utf8(b"Hello World!!!");
         print(&greeting);
         move_to(caller, MoveResource {
@@ -15,7 +15,7 @@ module movement::hello_world {
     }
 
     #[test(caller = @0x1)]
-    fun test_init_module(caller: &signer) {
-        init_module(caller);
+    fun test_create_first_resource(caller: &signer) {
+        create_first_resource(caller);
     }
 }

@@ -7,7 +7,7 @@ module movement::address_and_signer {
         data: u64,
     }
 
-    fun create_resource(new_data: u64, owner: &signer) {
+    public entry fun create_resource(owner: &signer, new_data: u64) {
         move_to(owner, ResourceName{
             data: new_data
         });
@@ -17,6 +17,6 @@ module movement::address_and_signer {
 
     #[test(account = @0x1)]
     fun test_create_resource(account: &signer) {
-        create_resource(10, account);
+        create_resource(account, 10);
     }
 }

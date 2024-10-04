@@ -6,7 +6,7 @@
 - [[./functions_visibilities/][Functions, view Functions & Visibilities]]
 
 * Hello world Contract
-#+begin_src move :mkdirp yes :tangle ~/.config/skhd/skhdrc :export code :results silent :lexical t
+#+begin_src move
 module movement::hello_world {
     use std::string::{String, utf8};
     use std::debug::print;
@@ -15,7 +15,7 @@ module movement::hello_world {
         string: String
     }
 
-    fun init_module(caller: &signer) {
+    public entry fun create_first_resource(caller: &signer) {
         let greeting: String = utf8(b"Hello World!!!");
         print(&greeting);
         move_to(caller, MoveResource {
@@ -24,23 +24,282 @@ module movement::hello_world {
     }
 
     #[test(caller = @0x1)]
-    fun test_init_module(caller: &signer) {
-        init_module(caller);
+    fun test_create_first_resource(caller: &signer) {
+        create_first_resource(caller);
     }
 }
 #+end_src
 
-- Running test on terminal:
-#+begin_src sh
-aptos move test -f hello_world
+* Install Movement CLI via build from source (Linux/MacOS)
+#+begin_quote
+[[https://docs.movementnetwork.xyz/devs/getstarted][Details | Choose other Dev Environment]]
+#+end_quote
+
+** Install
+- Step 1: Clone the Aptos-core repo & go into the newly created directory
+#+begin_src sh :results output :session share :async true
+git clone https://github.com/movementlabsxyz/aptos-core.git && cd aptos-core
 #+end_src
 
+- Step 2: Install all prerequites using automatic script
+  1. Using the Automatic Script to install prerequisites
+     #+begin_src sh
+./scripts/dev_setup.sh
+     #+end_src
+  2. Update your current shell environment
+     #+begin_src sh
+source ~/.cargo/env
+     #+end_src
+  3. Ensure you have =cargo= installed by following this commands:
+     #+begin_src sh
+cargo --version
+     #+end_src
+
+- Step 3:  Build the Aptos CLI tool
+#+begin_src sh
+cargo build -p movement
+#+end_src
+
+#+begin_quote
+The binary will be available at target/debug/movement
+#+end_quote
+
+- Step 4: Move this executable to a place in your path
+#+begin_src sh
+sudo cp target/debug/movement /opt/homebrew/bin/
+#+end_src
+
+** Check
+#+begin_src sh :results output
+aptos --help
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Command Line Interface (CLI) for developing and interacting with the Movement blockchain
+
+Usage: aptos <COMMAND>
+
+Commands:
+  account     Tool for interacting with accounts
+  config      Tool for interacting with configuration of the Movement CLI tool
+  genesis     Tool for setting up an Movement chain Genesis transaction
+  governance  Tool for on-chain governance
+  info        Show build information about the CLI
+  init        Tool to initialize current directory for the movement tool
+  key         Tool for generating, inspecting, and interacting with keys
+  move        Tool for Move smart contract related operations
+  multisig    Tool for interacting with multisig accounts
+  node        Tool for operations related to nodes
+  stake       Tool for manipulating stake and stake pools
+  update      Update the CLI or other tools it depends on
+  help        Print this message or the help of the given subcommand(s)
+
+Options:
+  -h, --help     Print help
+  -V, --version  Print version
+#+end_example
+
+* Build, Test & Call function on Aptos Move
+#+begin_quote
+Ensure you have the [[https://aptos.dev/en/build/cli][Aptos CLI]] installed
+#+end_quote
+** Set up Development Environment
+- Initialize your Aptos profile for package development and add Movement as a custom network
+#+begin_src sh
+movement init --network custom --rest-url https://aptos.devnet.suzuka.movementlabs.xyz/v1 --skip-faucet
+#+end_src
+Ở hiện tại thì chúng ta sẽ bỏ qua giai đoạn faucet ở CLI mà thực thi điều này ở trên UI thông qua [[https://faucet.movementlabs.xyz/?network=aptos][link]]
+
+- Sucess Result:
+#+begin_src sh :results output :session share :async true
+Configuring for profile default
+Configuring for network Custom
+Using command line argument for rest URL https://aptos.devnet.suzuka.movementlabs.xyz/v1
+Not configuring a faucet because --skip-faucet was provided
+Enter your private key as a hex literal (0x...) [Current: None | No input: Generate new key (or keep one if present)]
+
+No key given, generating key...
+Account 0x3d4dd145c51722b2b236bf544a2f12718450f4e7ab4f70c789160a5829e73586 has been initialized locally, but you must transfer coins to it to create the account onchain
+
+---
+Aptos CLI is now set up for account 0x3d4dd145c51722b2b236bf544a2f12718450f4e7ab4f70c789160a5829e73586 as profile default!
+ See the account here: https://explorer.aptoslabs.com/account/0x3d4dd145c51722b2b236bf544a2f12718450f4e7ab4f70c789160a5829e73586?network=custom
+ Run `aptos --help` for more information about commands
+{
+  "Result": "Success"
+}
+#+end_src
+
+Ở đây bạn sẽ cần quản tâm tới Account được generate ra là: =0x3d4dd145c51722b2b236bf544a2f12718450f4e7ab4f70c789160a5829e73586=
+#+begin_src sh
+No key given, generating key...
+Account 0x3d4dd145c51722b2b236bf544a2f12718450f4e7ab4f70c789160a5829e73586 has been initialized locally, but you must transfer coins to it to create the account onchain
+#+end_src
+
+- Sau khi hoàn thành thì trong folder của bạn sẽ xuất hiện 1 folder mang tên =./aptos/config.yaml=, Tất cả thông tin mà bạn đã generate ra trước đó sẽ được lưu vào file config.yaml.
+
+** Faucet
+Để có thể thực hiện các transaction trên mạng movement blockchain bạn sẽ cần Move Tokens để trả phí cho các tx đó, bạn có thể lấy Move free từ faucet UI trong đường Link này:
+- Bạn sẽ sử dụng address đã được generate trong file =./aptos/config.yaml=
+[[../../assets/images/faucet-ui.png]]
+
+- Sau đó bạn có thể kiểm tra lượng tokens bạn có hay chưa thông qua lệnh:
+#+begin_src sh :results output
+aptos account balance
+#+end_src
+
+#+begin_src json
+{
+  "Result": [
+    {
+      "asset_type": "coin",
+      "coin_type": "0x1::aptos_coin::AptosCoin",
+      "balance": 100000000
+    }
+  ]
+}
+#+end_src
+
+** Initialize your Move project:
+#+begin_src sh
+aptos move init --name hello_movement
+#+end_src
+
+- Sau khi thực thi việc init source code move, thì folder của bạn sẽ có các files, folders như bên dưới:
+#+begin_src sh :results output
+├── .aptos/config.yaml
+├── Move.toml
+├── scripts
+├── sources
+└── tests
+#+end_src
+
+- Điều bạn cần chú ý là file Move.toml
+#+begin_src toml
+[package] # Includes packages metadata such as name version
+name = "hello_movement"
+version = "1.0.0"
+authors = []
+
+[addresses]
+movement = "0x3d4dd145c51722b2b236bf544a2f12718450f4e7ab4f70c789160a5829e73586"
+
+[dev-addresses]
+
+# Multiline Style
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-core.git"
+rev = "mainnet"
+subdir = "aptos-move/framework/aptos-framework"
+
+[dev-dependencies]
+#+end_src
+
+- Bạn sẽ copy & paste account address đã được generate ra trước đó vào [addresses] để thực hiện việc publish contract của bạn lên đó.
+#+begin_src toml
+[addresses]
+movement = "0x3d4dd145c51722b2b236bf544a2f12718450f4e7ab4f70c789160a5829e73586"
+#+end_src
+
+** Implement Code
+- Tạo file =.move= contract của bạn trên trong folder =/sources=.
+#+begin_src sh :results output
+├── .aptos/config.yaml
+├── Move.toml
+├── scripts
+├── sources
+│   └── hello_world.move
+└── tests
+#+end_src
+
+- =/sources/hello_world.move=
+#+begin_src move
+module movement::hello_world {
+    use std::string::{String, utf8};
+    use std::debug::print;
+
+    struct MoveResource has key {
+        string: String
+    }
+
+    public entry fun create_first_resource(caller: &signer) {
+        let greeting: String = utf8(b"Hello World!!!");
+        print(&greeting);
+        move_to(caller, MoveResource {
+            string: greeting
+        });
+    }
+
+    #[test(caller = @0x1)]
+    fun test_create_first_resource(caller: &signer) {
+        create_first_resource(caller);
+    }
+}
+#+end_src
+
+- Building & Testing Contact
+#+begin_src sh
+aptos move build
+#+end_src
+
+- Result:
+#+begin_src json
+{
+  "Result": [
+    "3d4dd145c51722b2b236bf544a2f12718450f4e7ab4f70c789160a5829e73586::hello_world",
+  ]
+}
+#+end_src
+
+- Testing:
+#+begin_src sh
+aptos move test
+#+end_src
+
+- Result:
 #+begin_src sh
 Running Move unit tests
 [debug] "Hello World!!!"
-[ PASS    ] 0x1::hello_world::test_init_module
+[ PASS ] 0x3d4dd145c51722b2b236bf544a2f12718450f4e7ab4f70c789160a5829e73586::hello_world::test_create_first_resource
 Test result: OK. Total tests: 1; passed: 1; failed: 0
 {
   "Result": "Success"
 }
 #+end_src
+
+** Publish Contract & Call it
+#+begin_src sh
+movement move publish
+#+end_src
+
+- Success Result:
+#+begin_src sh
+Transaction submitted: https://explorer.aptoslabs.com/txn/0xe019cffa060c50e067fa0522199cc5f667bab840998a30c57e70d09f6d13a77f?network=devnet
+{
+  "Result": {
+    "transaction_hash": "0xe019cffa060c50e067fa0522199cc5f667bab840998a30c57e70d09f6d13a77f",
+    "gas_used": 7260,
+    "gas_unit_price": 100,
+    "sender": "122d28da2607724405a4691e35f7fad06667ec32229781f8994c70f24ec59c58",
+    "sequence_number": 0,
+    "success": true,
+    "timestamp_us": 1727944927400079,
+    "version": 84201807,
+    "vm_status": "Executed successfully"
+  }
+}
+#+end_src
+
+- Ban sẽ sử dụng transaction để tìm kiếm trên explorer của movement:
+#+begin_src json
+"transaction_hash": "0xe019cffa060c50e067fa0522199cc5f667bab840998a30c57e70d09f6d13a77f"
+#+end_src
+
+[[../../assets/images/1-tx.png]]
+
+- Hoặc bạn sẽ tìm kiếm account của bạn đã generate ra lúc trước để xem các module bạn đã deploy.
+[[../../assets/images/2-modules.png]]
+
+- Ở trong từng module bạn cũng có thể call từng function có trong modules của bạn, dùng để call thử hoặc testing ở phía GUI.
+[[../../assets/images/3-fn.png]]
