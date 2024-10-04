@@ -12,7 +12,7 @@ A collection of Move language code examples and developer portal sample implemen
 
 - [[./sources/basic][Get started]]
   + [[./sources/basic/data_type][Data Type]]
-    + [[./sources/basic/data_type/integer_type.move][Integer]]
+    + [[file:sources/basic/data_type/README.org::Integer][Integer]]
     + [[./sources/basic/data_type/boolean_type.move][Boolean]]
     + [[./sources/basic/data_type/address_signer.move][Address & Signer]]
     + [[./sources/basic/data_type/string_vector.move][String & Vector]]
