@@ -7,6 +7,7 @@
 - [[./events][Events]]
 - [[./objects][Objects]]
   - Address Object & Create Object
+  - [[file:objects/readme.org::*Address Object & Create Object][Address Object & Create Object]]
   - Named Objects
   - Object Ownership & Transfer Object
   - Object Permissions & ObjectRefs
