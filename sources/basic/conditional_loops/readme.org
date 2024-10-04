@@ -1,5 +1,17 @@
 #+TITLE: Conditionals & Loops
 
+* Table of Contents :toc:
+- [[#summary][Summary]]
+- [[#conditionals-in-move][Conditionals in Move]]
+  - [[#basic-syntax][Basic Syntax]]
+  - [[#key-points][Key Points]]
+  - [[#multiple-conditions][Multiple Conditions]]
+- [[#loops][Loops]]
+  - [[#while-loops][While Loops]]
+  - [[#for-loops][For Loops]]
+  - [[#infinite-loops][Infinite Loops]]
+  - [[#example-sum-of-first-n-natural-numbers][Example: Sum of First N Natural Numbers]]
+
 * Summary
 - Conditionals in Move use `if-else` statements with boolean conditions and required curly braces.
 - Multiple conditions can be chained using `else if`.

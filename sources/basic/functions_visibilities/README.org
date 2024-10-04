@@ -4,6 +4,23 @@
 [[./functions.move][Full Code]]
 #+end_quote
 
+* Table of Contents :toc:
+- [[#function][Function]]
+  - [[#overview][Overview]]
+  - [[#declaring-address-variables][Declaring Address Variables]]
+- [[#view-function][View Function]]
+  - [[#definition][Definition]]
+  - [[#importance][Importance]]
+  - [[#benefits][Benefits]]
+  - [[#how-to-use][How to Use]]
+  - [[#advantages][Advantages]]
+  - [[#conclusion][Conclusion]]
+- [[#function-visibilities][Function Visibilities]]
+  - [[#private][Private]]
+  - [[#public][Public]]
+  - [[#publicfriend][Public(friend)]]
+  - [[#entry][Entry]]
+
 * Function
 ** Overview
 
