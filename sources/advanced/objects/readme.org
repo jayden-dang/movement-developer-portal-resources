@@ -2,15 +2,7 @@
 
 * Table of Contents :toc:
 - [[#address-object--create-object][Address Object & Create Object]]
-  - [[#summary][Summary]]
-  - [[#what-is-object][What is Object?]]
-  - [[#limitations-of-structs][Limitations of Structs]]
-  - [[#create-a-object][Create a Object]]
 - [[#named-objects][Named Objects]]
-  - [[#summary-1][Summary]]
-  - [[#named-object][Named Object]]
-  - [[#full-code][Full Code]]
-  - [[#function-descriptions][Function Descriptions]]
 - [[#object-ownership--transfer-object][Object Ownership & Transfer Object]]
 - [[#object-permissions--objectrefs][Object Permissions & ObjectRefs]]
 - [[#using-extendref][Using ExtendRef]]
@@ -18,7 +10,7 @@
 - [[#using-deleteref][Using DeleteRef]]
 
 * Address Object & Create Object
-** Summary
+*** Summary
 - Objects are a key feature in the =aptos_framework=, enhancing code flexibility and adaptability.
 - They address limitations of structs such as lack of stable identity, limited extensibility, and data overload.
 - Objects maintain stable references, allow potential future extensions, and improve data organization.
@@ -26,12 +18,12 @@
 - The process includes getting the owner's address, creating the object, generating an object signer, and moving the object to its address.
 - Different types of objects (normal, named, sticky) can be created with varying properties of deletability and address determinism.
 
-** What is Object?
+*** What is Object?
 Objects are one of the most exciting features of the aptos_framework. They make your code extremely flexible and help developers be more adaptable in designing and developing products. Objects are also used in many of Aptos' standard code implementations, such as Digital Assets, Coins, and Fungible Tokens.
 
 In this lesson, we will explore what objects are and how they work.
 
-** Limitations of Structs
+*** Limitations of Structs
 Reflecting on our previous lessons about structs, we can see that while using structs and a resource-centric approach has made Move very flexible, there are still several limitations:
 
 1. Lack of Stable Identity: Structs can move freely between resources, making them difficult to track consistently.
@@ -44,7 +36,7 @@ Reflecting on our previous lessons about structs, we can see that while using st
 2. Potentially extend the object's functionality in future upgrades.
 3. Keep related data grouped together, improving organization.
 
-** Create a Object
+*** Create a Object
 #+begin_src move
 module movement::object_module_entry {
     use aptos_framework::object;
@@ -152,14 +144,14 @@ In addition to the =object::create_object= function, we have other functions to 
 - =object::create_sticky_object= : A sticky Object | This type is also =not deletable= and has a =random address=
 
 * Named Objects
-** Summary
+*** Summary
 - Named objects in Move allow for easy retrieval and manipulation of object data
 - The module demonstrates creation, retrieval, and modification of a Object
 - Named objects use a fixed address, making them more convenient than default or sticky objects
 - The module includes test functions to verify correct behavior of main functions
 - Global storage methods like =borrow_global= and =borrow_global_mut= are used to access object data
 
-** Named Object
+*** Named Object
 
 In the previous section, we learned about three types of Objects, among which named objects will likely be the type we use most often because we can initialize an object address that is fixed and can be easily retrieved through the Object Name Address. As for default objects and sticky objects, both create a random address. This makes it difficult to use them for querying or listing information, but they also have their uses in certain cases.
 
@@ -212,7 +204,7 @@ module movement::object_module_entry {
 
 By using named objects, we can easily access the object and perform changes or view data.
 
-**# Modify & Retrieve Object Value
+*** Modify & Retrieve Object Value
 
 To modify and retrieve data from objects, we still use global storage methods like =borrow_global= and =borrow_global_mut=.
 #+begin_src move
@@ -226,7 +218,7 @@ public fun set_value(owner: address, new_value: u64) acquires MovementObject {
 }
 #+end_src
 
-** Full Code
+*** Full Code
 #+begin_src move
 module movement::object_module_entry {
     use aptos_framework::object;
@@ -294,7 +286,7 @@ module movement::object_module_entry {
 }
 #+end_src
 
-** Function Descriptions
+*** Function Descriptions
 - init_module(owner: &signer)
   This function initializes the module by creating a named object and setting its initial value.
 
