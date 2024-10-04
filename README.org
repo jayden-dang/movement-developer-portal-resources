@@ -12,7 +12,7 @@ A collection of Move language code examples and developer portal sample implemen
 
 - [[./sources/basic][Get started]]
   + [[./sources/basic/data_type][Data Type]]
-    + [[file:sources/basic/data_type/README.org::Integer][Integer]]
+    + [[./sources/basic/data_type/README.org][Integer]]
     + [[./sources/basic/data_type/boolean_type.move][Boolean]]
     + [[./sources/basic/data_type/address_signer.move][Address & Signer]]
     + [[./sources/basic/data_type/string_vector.move][String & Vector]]
@@ -25,10 +25,11 @@ A collection of Move language code examples and developer portal sample implemen
   + [[./sources/basic/unit_testing][Unit Testing]]
 
 | Main        | Topic                                    | Description |
+|-            |                                          |             |
 | [[./sources/basic][Get started]] | [[./sources/basic/data_type][Data Type]]                                |             |
-|             | Functions, view Functions & Visibilities |             |
-|             | Resources on Move & Ability of Resource  |             |
-|             | Conditionals & Loops                     |             |
-|             | Constants & Error Handling               |             |
-|             | Generics Types & Phantom Type            |             |
-|             | Unit Testing                             |             |
+|             | [[./sources/basic/functions_visibilities][Functions, view Functions & Visibilities]] |             |
+|             | [[./sources/basic/resources_abilities][Resources on Move & Ability of Resource]]  |             |
+|             | [[./sources/basic/conditional_loops][Conditionals & Loops]]                     |             |
+|             | [[./sources/basic/constants_error_handling][Constants & Error Handling]]               |             |
+|             | [[./sources/basic/generic_type][Generics Types]]                           |             |
+|             | [[./sources/basic/unit_testing][Unit Testing]]                             |             |
