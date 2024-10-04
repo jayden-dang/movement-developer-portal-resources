@@ -9,8 +9,7 @@ A collection of Move language code examples and developer portal sample implemen
 #+end_quote
 
 
-
-- [[./sources/basic][Get started]]
+- [[./sources/basic][Get started (Basic)]]
   + [[./sources/basic/data_type][Data Type]]
     + [[./sources/basic/data_type/README.org][Integer]]
     + [[./sources/basic/data_type/boolean_type.move][Boolean]]
@@ -23,9 +22,17 @@ A collection of Move language code examples and developer portal sample implemen
   + [[./sources/basic/constants_error_handling][Constants & Error Handling]]
   + [[./sources/basic/generic_type][Generics Type]]
   + [[./sources/basic/unit_testing][Unit Testing]]
+- [[./sources/advanced][Move Advanced]]
+  + [[./sources/advanced/local_global_resource][Local Storage & Global Storage Operations]]
+  + Writing/Reading/Detroying Resources to user account
+  + Resource Group
+  + Events
+  + Objects
+  + Smart Vector & Smart Table
+
+- Overview:
 
 | Main        | Topic                                    | Description |
-|-            |                                          |             |
 | [[./sources/basic][Get started]] | [[./sources/basic/data_type][Data Type]]                                |             |
 |             | [[./sources/basic/functions_visibilities][Functions, view Functions & Visibilities]] |             |
 |             | [[./sources/basic/resources_abilities][Resources on Move & Ability of Resource]]  |             |
