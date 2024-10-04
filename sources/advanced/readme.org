@@ -4,6 +4,6 @@
 - [[./local_global_storage][Local Storage & Global Storage Operations]]
 - [[./writing_reading_detroying_resource][Writing/Reading/Detroying Resources]]
 - [[./resource_group][Resource Group]]
-- [[#events][Events]]
+- [[./events][Events]]
 - [[#objects][Objects]]
 - [[#smart-vector--smart-table][Smart Vector & Smart Table]]
