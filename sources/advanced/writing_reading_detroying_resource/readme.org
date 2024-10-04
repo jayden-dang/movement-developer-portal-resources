@@ -1,5 +1,14 @@
 #+TITLE: Writing | Reading | Detroying Resources
 
+* Table of Contents :toc:
+- [[#summary][Summary]]
+- [[#writingreading-resources][Writing/Reading resources]]
+  - [[#break-down][Break down]]
+  - [[#using-global-storage-in-move][Using Global Storage in Move]]
+- [[#detroying-a-resource][Detroying a Resource]]
+  - [[#overview][Overview]]
+  - [[#full-code][Full Code]]
+
 * Summary
 Key points about global storage in Move:
 - Global storage allows persistent data storage associated with addresses
@@ -166,6 +175,7 @@ This function reads the value from global storage. It first checks if the resour
 
 By following these steps, you can effectively work with global storage in Move, ensuring proper data management and access across your smart contract.
 * Detroying a Resource
+** Overview
 Among the provided functions in the previous topics, we haven't yet discussed =move_from=. This function removes a resource from an account or address. It's crucial to note that to use =move_from= for a resource, you must ensure the resource has the =drop= ability. Without this, the compiler will throw an error. This safeguard prevents resources from being unintentionally deleted, either accidentally or in cases where you want resources to remain permanent. It allows you to control whether resources can be deleted or should persist indefinitely.
 
 - Drop Ability
@@ -182,7 +192,7 @@ public entry fun remove_resource_from_global_storage(account: &signer) acquires 
 }
    #+end_src
 
-*** Full Code
+** Full Code
 #+begin_src move
 module movement::local_global_storage {
     use std::debug::print;

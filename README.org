@@ -24,8 +24,8 @@ A collection of Move language code examples and developer portal sample implemen
   + [[./sources/basic/unit_testing][Unit Testing]]
 - [[./sources/advanced][Move Advanced]]
   + [[./sources/advanced/local_global_resource][Local Storage & Global Storage Operations]]
-  + Writing/Reading/Detroying Resources to user account
-  + Resource Group
+  + [[./sources/advanced/writing_reading_detroying_resource][Writing/Reading/Detroying Resources to user account]]
+  + [[./sources/advanced/resource_group][Resource Group]]
   + Events
   + Objects
   + Smart Vector & Smart Table
