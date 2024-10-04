@@ -7,7 +7,7 @@ authors = [
 license = "MIT"
 
 [addresses]
-movement = "0x696e90758094efbf0e2e9dc7fb9fbbde6c60d479bed1b1984cf62575fc864d96"
+movement = "0xa68f62fad2c868af5ba6730916167c3072d10d32e6faadd0238ba4e25d5ed6f1"
 
 [dev-addresses]
 # movement = "0x1"
