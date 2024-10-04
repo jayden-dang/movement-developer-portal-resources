@@ -1,5 +1,5 @@
 module movement::generic_type {
-    use std::string::{String, utf8};
+    use std::string::String;
     use std::debug::print;
     use std::signer;
 
