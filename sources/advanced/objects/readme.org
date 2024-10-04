@@ -10,7 +10,7 @@
 - [[#using-deleteref][Using DeleteRef]]
 
 * Address Object & Create Object
-*** Summary
+*** =Summary=
 - Objects are a key feature in the =aptos_framework=, enhancing code flexibility and adaptability.
 - They address limitations of structs such as lack of stable identity, limited extensibility, and data overload.
 - Objects maintain stable references, allow potential future extensions, and improve data organization.
