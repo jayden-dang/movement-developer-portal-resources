@@ -1,4 +1,4 @@
-#+TITLE: Generics Type & Phantom Type
+#+TITLE: Generics Type
 
 * Table of Contents :toc:
 - [[#generics-in-move-enhancing-code-flexibility-and-reusability][Generics in Move: Enhancing Code Flexibility and Reusability]]

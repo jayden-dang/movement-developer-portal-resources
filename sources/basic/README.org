@@ -5,6 +5,10 @@
 - [[./data_type][Data Types]]
 - [[./functions_visibilities/][Functions, view Functions & Visibilities]]
 - [[./resources_abilities][Resources on Move & Ability of Resource]]
+- [[./conditional_loops][Conditionals & Loops]]
+- [[./constants_error_handling][Constants & Error Handling]]
+- [[./generic_type][Generic Type]]
+- [[./unit_testing][Unit Testing]]
 
 * Hello world Contract
 #+begin_src move
