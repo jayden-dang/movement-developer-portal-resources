@@ -10,11 +10,11 @@
 - Resources in a group are stored close together in global storage memory.
 - This proximity ensures quicker queries and reduced processing costs.
 - The code example demonstrates creating and using resource groups with multiple fields.
-- Resource groups are a current solution for complex resources, with `objects` feature planned for future optimization.
+- Resource groups are a current solution for complex resources, with =objects= feature planned for future optimization.
 
 * Example
 #+begin_quote
-In real-world projects, sometimes one of your resources will have many different fields. Although in the future we may use the `objects` feature to optimize complex resources (which will be shared in upcoming topics), for now we can also create resources and group them together in a group. Below is an example:
+In real-world projects, sometimes one of your resources will have many different fields. Although in the future we may use the =objects= feature to optimize complex resources (which will be shared in upcoming topics), for now we can also create resources and group them together in a group. Below is an example:
 #+end_quote
 
 #+begin_src move

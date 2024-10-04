@@ -86,7 +86,7 @@ struct EventChangeValue has drop, store {
 }
 #+end_src
 
-Then we call `event::emit` after the function has finished executing.
+Then we call =event::emit= after the function has finished executing.
 
 #+begin_src move
 public entry fun change_value_from_global_storage(signer: &signer, value: u64) acquires GlobalData {
