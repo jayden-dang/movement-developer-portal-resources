@@ -1,4 +1,4 @@
-module movement::loops {
+module movement::conditional_loops {
     use std::vector;
 
     // Sum of first N natural numbers using while loop

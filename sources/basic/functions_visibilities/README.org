@@ -33,7 +33,7 @@ View functions are important in the Movement blockchain because:
 ** Benefits
 - Create a GET API structure to display complex states of smart contracts.
 - Simplify the process of retrieving complex data, saving time and resources.
-- Significantly improve the usability of the Aptos blockchain.
+- Significantly improve the usability of the Move blockchain.
 - Make the blockchain more accessible to developers.
 
 ** How to Use
@@ -160,7 +160,7 @@ module movement::pub_module {
 
 - Running test on terminal:
 #+begin_src sh
-aptos move test -f priv_module
+movement move test -f priv_module
 #+end_src
 
 #+begin_src sh
@@ -199,7 +199,7 @@ module movement::function_visibilities {
 
 - Running test on terminal:
 #+begin_src sh
-aptos move publish
+movement move publish
 #+end_src
 
 - Result
@@ -222,9 +222,9 @@ aptos move publish
 
 - Call Entry Function
 #+begin_src sh :results output :session share :async true
-aptos move run --function-id 'default::FunctionVisibilities::internal_transfer'
-aptos move run --function-id 'default::FunctionVisibilities::pub_transfer'
-aptos move run --function-id 'default::FunctionVisibilities::transfer'
+movement move run --function-id 'default::FunctionVisibilities::internal_transfer'
+movement move run --function-id 'default::FunctionVisibilities::pub_transfer'
+movement move run --function-id 'default::FunctionVisibilities::transfer'
 #+end_src
 
 #+begin_src json
