@@ -1,33 +1,44 @@
-#+TITLE: Writing | Reading | Detroying Resources
+# Table of Contents
 
-* Table of Contents :toc:
-- [[#summary][Summary]]
-- [[#writingreading-resources][Writing/Reading resources]]
-  - [[#break-down][Break down]]
-  - [[#using-global-storage-in-move][Using Global Storage in Move]]
-- [[#detroying-a-resource][Detroying a Resource]]
-  - [[#overview][Overview]]
-  - [[#full-code][Full Code]]
+-   [Summary](#summary)
+-   [Writing/Reading resources](#writingreading-resources)
+    -   [Break down](#break-down)
+    -   [Using Global Storage in Move](#using-global-storage-in-move)
+-   [Detroying a Resource](#detroying-a-resource)
+    -   [Overview](#overview)
+    -   [Full Code](#full-code)
 
-* Summary
+# Summary
+
 Key points about global storage in Move:
-- Global storage allows persistent data storage associated with addresses
-- Resources stored in global storage must have the 'key' ability
-- Use =move_to= to store data and 'borrow_global' to access it
-- Always check if a resource exists before attempting to access it
-- Mutable access requires =borrow_global_mut= and proper access control
-- The =acquires= keyword is necessary for functions that access global storage
-- The =move_from= function removes a resource from an account or address.
-- Resources must have the "drop" ability to use =move_from=.
-- The "drop" ability prevents unintentional deletion of resources.
-- It allows control over whether resources can be deleted or should persist.
-- The code demonstrates how to implement and use =move_from= in a Move module.
-- The module includes functions for creating, modifying, and removing global storage.
 
-* Writing/Reading resources
-Based on the previous topic, we've learned how to create a resource and store it in global storage. Now, let's explore how to access and interact with data in global storage.
+-   Global storage allows persistent data storage associated with
+    addresses
+-   Resources stored in global storage must have the 'key' ability
+-   Use `move_to` to store data and 'borrow~global~' to access it
+-   Always check if a resource exists before attempting to access it
+-   Mutable access requires `borrow_global_mut` and proper access
+    control
+-   The `acquires` keyword is necessary for functions that access global
+    storage
+-   The `move_from` function removes a resource from an account or
+    address.
+-   Resources must have the "drop" ability to use `move_from`.
+-   The "drop" ability prevents unintentional deletion of resources.
+-   It allows control over whether resources can be deleted or should
+    persist.
+-   The code demonstrates how to implement and use `move_from` in a Move
+    module.
+-   The module includes functions for creating, modifying, and removing
+    global storage.
 
-#+begin_src move
+# Writing/Reading resources
+
+Based on the previous topic, we've learned how to create a resource and
+store it in global storage. Now, let's explore how to access and
+interact with data in global storage.
+
+``` move
 module movement::local_global_storage {
     use std::debug::print;
     use std::signer::address_of;
@@ -73,56 +84,66 @@ module movement::local_global_storage {
         new_global(account, 10);
     }
 }
-#+end_src
+```
 
-> Running test:
-#+begin_src sh
+\> Running test:
+
+``` bash
 movement move test -f test_new_global
-#+end_src
+```
 
-> Result:
-#+begin_src sh
+\> Result:
+
+``` bash
 Running Move unit tests
 [ PASS    ] 0x5fdf6936671d4e4a89b686aff0b5a4dfe083babbaaa6e78f5daa8801f94938a6::local_global_storage::test_new_globalTest result: OK. Total tests: 1; passed: 1; failed: 0
 {
   "Result": "Success"
 }
-#+end_src
-** Break down
-#+begin_quote
-Let's break down the code and explain it step by step:
-#+end_quote
-*** 1. Struct Definition
+```
 
-#+begin_src rust
+## Break down
+
+> Let's break down the code and explain it step by step:
+
+### 1. Struct Definition
+
+``` rust
 struct GlobalData has key {
         value: u64
 }
-#+end_src
+```
 
-Here, we define a struct called =GlobalData= with the =key= ability, allowing it to be stored in global storage. It contains a single field =value= of type =u64=.
+Here, we define a struct called `GlobalData` with the `key` ability,
+allowing it to be stored in global storage. It contains a single field
+`value` of type `u64`.
 
-*** 2. Error Constant
-#+begin_src move
+### 2. Error Constant
+
+``` move
 const EResourceNotExist: u64 = 33;
-#+end_src
+```
 
-This defines an error code that will be used when a resource doesn't exist in global storage.
+This defines an error code that will be used when a resource doesn't
+exist in global storage.
 
-*** 3. Function to Create Global Storage
-#+begin_src move
+### 3. Function to Create Global Storage
+
+``` move
 public entry fun new_global(signer: &signer, value: u64) {
     let data = GlobalData {
         value: value
     } ;
     move_to(signer, data);
 }
-#+end_src
+```
 
-This function creates a new =GlobalData= instance and moves it to the signer's address in global storage.
+This function creates a new `GlobalData` instance and moves it to the
+signer's address in global storage.
 
-*** 4. Function to Modify Global Storage
-#+begin_src move
+### 4. Function to Modify Global Storage
+
+``` move
 public entry fun change_value_from_global_storage(signer: &signer, value: u64) acquires GlobalData {
     let addr = address_of(signer);
     if (!check_global_storage_exists(addr)) {
@@ -132,21 +153,25 @@ public entry fun change_value_from_global_storage(signer: &signer, value: u64) a
     let value_reference = &mut borrow_global_mut&lt;GlobalData&gt;(addr).value;
     *value_reference = *value_reference + value;
 }
-#+end_src
+```
 
-This function modifies the value in global storage. It first checks if the resource exists, then borrows a mutable reference to update the value.
+This function modifies the value in global storage. It first checks if
+the resource exists, then borrows a mutable reference to update the
+value.
 
-*** 5. Function to Check Global Storage Existence
-#+begin_src move
+### 5. Function to Check Global Storage Existence
+
+``` move
 public fun check_global_storage_exists(addr: address): bool {
     exists&lt;GlobalData&gt;(addr)
 }
-#+end_src
+```
 
-This function checks if =GlobalData= exists at a given address.
+This function checks if `GlobalData` exists at a given address.
 
-*** 6. Function to Read from Global Storage
-#+begin_src move
+### 6. Function to Read from Global Storage
+
+``` move
 #[view]
 public fun get_value_from_global_storage(addr: address): u64 acquires GlobalData {
     if (!check_global_storage_exists(addr)) {
@@ -155,45 +180,67 @@ public fun get_value_from_global_storage(addr: address): u64 acquires GlobalData
     let value_reference = borrow_global&lt;GlobalData&gt;(addr);
     value_reference.value
 }
-#+end_src
+```
 
-This function reads the value from global storage. It first checks if the resource exists, then borrows an immutable reference to read the value.
+This function reads the value from global storage. It first checks if
+the resource exists, then borrows an immutable reference to read the
+value.
 
-** Using Global Storage in Move
-1. Create a new global storage entry:
-   - Use the =new_global= function, providing a signer and an initial value.
-   - This stores the data under the signer's address.
-2. Check if global storage exists:
-   - Use the =check_global_storage_exists= function, passing an address.
-   - This returns a boolean indicating whether the data exists.
-3. Modify data in global storage:
-   - Use the =change_value_from_global_storage= function.
-   - This function adds the provided value to the existing value in storage.
-4. Read data from global storage:
-   - Use the =get_value_from_global_storage= function, passing an address.
-   - This returns the current value stored at that address.
+## Using Global Storage in Move
 
-By following these steps, you can effectively work with global storage in Move, ensuring proper data management and access across your smart contract.
-* Detroying a Resource
-** Overview
-Among the provided functions in the previous topics, we haven't yet discussed =move_from=. This function removes a resource from an account or address. It's crucial to note that to use =move_from= for a resource, you must ensure the resource has the =drop= ability. Without this, the compiler will throw an error. This safeguard prevents resources from being unintentionally deleted, either accidentally or in cases where you want resources to remain permanent. It allows you to control whether resources can be deleted or should persist indefinitely.
+1.  Create a new global storage entry:
+    -   Use the `new_global` function, providing a signer and an initial
+        value.
+    -   This stores the data under the signer's address.
+2.  Check if global storage exists:
+    -   Use the `check_global_storage_exists` function, passing an
+        address.
+    -   This returns a boolean indicating whether the data exists.
+3.  Modify data in global storage:
+    -   Use the `change_value_from_global_storage` function.
+    -   This function adds the provided value to the existing value in
+        storage.
+4.  Read data from global storage:
+    -   Use the `get_value_from_global_storage` function, passing an
+        address.
+    -   This returns the current value stored at that address.
 
-- Drop Ability
-   #+begin_src rust
-struct GlobalData has key, drop {
-    value: u64
-}
-   #+end_src
+By following these steps, you can effectively work with global storage
+in Move, ensuring proper data management and access across your smart
+contract.
 
-- =move_from= function
-   #+begin_src move
-public entry fun remove_resource_from_global_storage(account: &signer) acquires GlobalData {
-    let rev = move_from<GlobalData>(address_of(account));
-}
-   #+end_src
+# Detroying a Resource
 
-** Full Code
-#+begin_src move
+## Overview
+
+Among the provided functions in the previous topics, we haven't yet
+discussed `move_from`. This function removes a resource from an account
+or address. It's crucial to note that to use `move_from` for a resource,
+you must ensure the resource has the `drop` ability. Without this, the
+compiler will throw an error. This safeguard prevents resources from
+being unintentionally deleted, either accidentally or in cases where you
+want resources to remain permanent. It allows you to control whether
+resources can be deleted or should persist indefinitely.
+
+-   Drop Ability
+
+    ``` rust
+    struct GlobalData has key, drop {
+        value: u64
+    }
+    ```
+
+-   `move_from` function
+
+    ``` move
+    public entry fun remove_resource_from_global_storage(account: &signer) acquires GlobalData {
+        let rev = move_from<GlobalData>(address_of(account));
+    }
+    ```
+
+## Full Code
+
+``` move
 module movement::local_global_storage {
     use std::debug::print;
     use std::signer::address_of;
@@ -256,15 +303,17 @@ module movement::local_global_storage {
         assert!(!check_global_storage_exists(address_of(account)), EResourceNotExist);
     }
 }
-#+end_src
+```
 
-> Running test:
-#+begin_src sh
+\> Running test:
+
+``` bash
 movement move test -f local_global_storage
-#+end_src
+```
 
-> Result:
-#+begin_src sh
+\> Result:
+
+``` bash
 Running Move unit tests
 [debug] 20
 [ PASS    ] 0x5fdf6936671d4e4a89b686aff0b5a4dfe083babbaaa6e78f5daa8801f94938a6::local_global_storage::test_change_value_global
@@ -272,4 +321,4 @@ Running Move unit tests
 {
   "Result": "Success"
 }
-#+end_src
+```
