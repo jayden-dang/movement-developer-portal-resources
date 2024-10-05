@@ -30,8 +30,6 @@ A collection of Move language code examples and developer portal sample implemen
   + [[./sources/advanced/objects][Objects]]
   + [[./sources/advanced/smart_table_smart_vector][Smart Vector & Smart Table]]
 
-- Overview:
-
 | Main          | Topic                                               | Description |
 | [[./sources/basic][Get started]]   | [[./sources/basic/data_type][Data Type]]                                           |             |
 |               | [[./sources/basic/functions_visibilities][Functions, view Functions & Visibilities]]            |             |

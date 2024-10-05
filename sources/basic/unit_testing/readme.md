@@ -1,19 +1,33 @@
-#+TITLE: Unit Testing
+# Table of Contents
 
-* Summary
-Unit testing in Move introduces powerful annotations to enhance the testing process:
+-   [Summary](#summary)
+-   [Example](#example)
 
-- `#[test]`: Designates a function as a test case
-- `#[test_only]`: Marks code for exclusive use in testing environments
-- `#[expected_failure]`: Indicates a test that is anticipated to fail
+# Summary
+
+Unit testing in Move introduces powerful annotations to enhance the
+testing process:
+
+-   \`#\[test\]\`: Designates a function as a test case
+-   \`#\[test~only~\]\`: Marks code for exclusive use in testing
+    environments
+-   \`#\[expected~failure~\]\`: Indicates a test that is anticipated to
+    fail
 
 These annotations revolutionize Move's testing capabilities:
-- The `#[test]` annotation transforms functions into comprehensive test suites
-- `#[test_only]` allows for the creation of modules, functions, or structures dedicated solely to testing purposes, enhancing code organization
-- With `#[expected_failure]`, developers can proactively identify and manage tests that are designed to fail, improving overall test coverage and reliability
 
-* Example
-#+begin_src move
+-   The \`#\[test\]\` annotation transforms functions into comprehensive
+    test suites
+-   \`#\[test~only~\]\` allows for the creation of modules, functions,
+    or structures dedicated solely to testing purposes, enhancing code
+    organization
+-   With \`#\[expected~failure~\]\`, developers can proactively identify
+    and manage tests that are designed to fail, improving overall test
+    coverage and reliability
+
+# Example
+
+``` move
 module movement::constants_error_handling_module {
     use std::debug::print;
     use std::signer;
@@ -70,17 +84,19 @@ module movement::constants_error_handling_module {
         show_address(myaccount);
     }
 }
-#+end_src
+```
 
-There are multiple ways to run unit tests using the CLI. By utilizing the `--filter` option, you can flexibly test with `module_name`, `function_name`, or `all`.
+There are multiple ways to run unit tests using the CLI. By utilizing
+the \`–filter\` option, you can flexibly test with \`module~name~\`,
+\`function~name~\`, or \`all\`.
 
-#+begin_src rust
+``` rust
 movement move test // Running all test function in source
 movement move test --filter unit_testing // Running all test function in the module
 movement move test --filter test_show_address // Running specific test function
-#+end_src
+```
 
-#+begin_src sh
+``` bash
 Running Move unit tests
 [ PASS ]  constants_error_handling_module::test_const_error
 [ PASS ]  constants_error_handling_module::test_is_even_failed
@@ -93,4 +109,4 @@ Test result: OK. Total tests: 4; passed: 4; failed: 0
 {
   "Result": "Success"
 }
-#+end_src
+```

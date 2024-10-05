@@ -1,40 +1,53 @@
-#+TITLE: Generics Type
+# Table of Contents
 
-* Table of Contents :toc:
-- [[#generics-in-move-enhancing-code-flexibility-and-reusability][Generics in Move: Enhancing Code Flexibility and Reusability]]
-- [[#key-benefits-of-generics][Key Benefits of Generics]]
-- [[#implementing-generics-in-move][Implementing Generics in Move]]
-- [[#generics-function][Generics Function]]
-- [[#generics-structs][Generics Structs]]
+-   [Generics in Move: Enhancing Code Flexibility and
+    Reusability](#generics-in-move-enhancing-code-flexibility-and-reusability)
+-   [Key Benefits of Generics](#key-benefits-of-generics)
+-   [Implementing Generics in Move](#implementing-generics-in-move)
+-   [Generics Function](#generics-function)
+-   [Generics Structs](#generics-structs)
 
-* Generics in Move: Enhancing Code Flexibility and Reusability
-#+begin_quote
-Move's generics feature empowers developers to craft versatile code that adapts to various data types, eliminating the need for type-specific implementations. This powerful concept, akin to generics in languages like Rust or Java, enables the creation of flexible, widely applicable code structures.
-#+end_quote
+# Generics in Move: Enhancing Code Flexibility and Reusability
 
-* Key Benefits of Generics
-- Promotes code reusability across different data types
-- Significantly reduces code duplication
-- Enhances overall code maintainability and readability
-- Facilitates the development of robust, type-safe abstractions
+> Move's generics feature empowers developers to craft versatile code
+> that adapts to various data types, eliminating the need for
+> type-specific implementations. This powerful concept, akin to generics
+> in languages like Rust or Java, enables the creation of flexible,
+> widely applicable code structures.
 
-* Implementing Generics in Move
-In Move, we typically refer to this concept as "generics" rather than type parameters and arguments. Here's how to leverage this feature:
+# Key Benefits of Generics
 
-- Declaring Generic Types
-    - Use angle brackets <T> to define type parameters in function and struct signatures
-    - Example: struct Container<T> { item: T }
-- Creating Generic Functions
-    - Place type parameters after the function name and before value parameters
-    - Example: public fun identity<T>(x: T): T { x }
-    - Utilize the type parameter T in parameter types, return types, and within the function body
+-   Promotes code reusability across different data types
+-   Significantly reduces code duplication
+-   Enhances overall code maintainability and readability
+-   Facilitates the development of robust, type-safe abstractions
 
-By mastering generics, Move developers can create more efficient, flexible, and maintainable code, elevating the quality of their blockchain applications.
+# Implementing Generics in Move
 
-* Generics Function
-Example: In the code snippet below is a simple example to show the information of a token created from the MoveToken struct.
+In Move, we typically refer to this concept as "generics" rather than
+type parameters and arguments. Here's how to leverage this feature:
 
-#+begin_src move
+-   Declaring Generic Types
+    -   Use angle brackets \<T\> to define type parameters in function
+        and struct signatures
+    -   Example: struct Container\<T\> { item: T }
+-   Creating Generic Functions
+    -   Place type parameters after the function name and before value
+        parameters
+    -   Example: public fun identity\<T\>(x: T): T { x }
+    -   Utilize the type parameter T in parameter types, return types,
+        and within the function body
+
+By mastering generics, Move developers can create more efficient,
+flexible, and maintainable code, elevating the quality of their
+blockchain applications.
+
+# Generics Function
+
+Example: In the code snippet below is a simple example to show the
+information of a token created from the MoveToken struct.
+
+``` move
 module movement::generic_type {
     use std::string::{String, utf8};
     use std::debug::print;
@@ -62,11 +75,13 @@ module movement::generic_type {
         show_token(token);
     }
 }
-#+end_src
+```
 
-Let's imagine a scenario where your application accepts more than one Token for payment in its functions. In this case, the code would be modified as follows.
+Let's imagine a scenario where your application accepts more than one
+Token for payment in its functions. In this case, the code would be
+modified as follows.
 
-#+begin_src move
+``` move
 module movement::generic_type {
     use std::string::{String, utf8};
     use std::debug::print;
@@ -113,11 +128,13 @@ module movement::generic_type {
         show_movement_token(movetoken);
     }
 }
-#+end_src
+```
 
-So if you have about 20 different tokens for payment, your code will be very long, so we will use generic types to upgrade this code as shown below:
+So if you have about 20 different tokens for payment, your code will be
+very long, so we will use generic types to upgrade this code as shown
+below:
 
-#+begin_src move
+``` move
 module movement::generic_type {
     use std::string::{String, utf8};
     use std::debug::print;
@@ -155,10 +172,11 @@ module movement::generic_type {
         show_token(movetoken);
     }
 }
-#+end_src
+```
 
-> Running test: =movement move test -f generic_type
-#+begin_src sh
+\> Running test: =movement move test -f generic~type~
+
+``` bash
 Running Move unit tests
 [debug] 0x696e90758094efbf0e2e9dc7fb9fbbde6c60d479bed1b1984cf62575fc864d96::generic_type::MoveToken {
   symbol: "MOVE",
@@ -177,16 +195,18 @@ Test result: OK. Total tests: 1; passed: 1; failed: 0
 {
   "Result": "Success"
 }
-#+end_src
+```
 
-* Generics Structs
-Type parameters for structures (structs) are placed after the struct name and can be used to name the types of the fields.
+# Generics Structs
 
-#+begin_src rust
+Type parameters for structures (structs) are placed after the struct
+name and can be used to name the types of the fields.
+
+``` rust
 struct Foo<T> has copy, drop { x: T }
 
 struct Bar<T1, T2> has copy, drop {
     x: T1,
     y: vector<T2>,
 }
-#+end_src
+```

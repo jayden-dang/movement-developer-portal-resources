@@ -1,33 +1,32 @@
-#+TITLE: Functions, view Functions & Visibilities
+# Table of Contents
 
-#+begin_quote
-[[./functions.move][Full Code]]
-#+end_quote
+-   [Function](#function)
+    -   [Overview](#overview)
+    -   [Declaring Address Variables](#declaring-address-variables)
+-   [View Function](#view-function)
+    -   [Definition](#definition)
+    -   [Importance](#importance)
+    -   [Benefits](#benefits)
+    -   [How to Use](#how-to-use)
+    -   [Advantages](#advantages)
+    -   [Conclusion](#conclusion)
+-   [Function Visibilities](#function-visibilities)
+    -   [Private](#private)
+    -   [Public](#public)
+    -   [Public(friend)](#publicfriend)
+    -   [Entry](#entry)
 
-* Table of Contents :toc:
-- [[#function][Function]]
-  - [[#overview][Overview]]
-  - [[#declaring-address-variables][Declaring Address Variables]]
-- [[#view-function][View Function]]
-  - [[#definition][Definition]]
-  - [[#importance][Importance]]
-  - [[#benefits][Benefits]]
-  - [[#how-to-use][How to Use]]
-  - [[#advantages][Advantages]]
-  - [[#conclusion][Conclusion]]
-- [[#function-visibilities][Function Visibilities]]
-  - [[#private][Private]]
-  - [[#public][Public]]
-  - [[#publicfriend][Public(friend)]]
-  - [[#entry][Entry]]
+# Function
 
-* Function
-** Overview
+## Overview
 
-Function syntax in Move is shared between module functions and script functions. Functions inside of modules are reusable, whereas script functions are only used once to invoke a transaction.
+Function syntax in Move is shared between module functions and script
+functions. Functions inside of modules are reusable, whereas script
+functions are only used once to invoke a transaction.
 
-** Declaring Address Variables
-#+begin_src move
+## Declaring Address Variables
+
+``` move
 fun name(params: type): return_type {
     todo!()
 }
@@ -36,47 +35,69 @@ fun plus(what_plus: u64): u64 {
     let result = 0 + what_plus;
     return result;
 }
-#+end_src
+```
 
-* View Function
-** Definition
-A view function is a function that retrieves data from the blockchain without making any changes. It is used to read and display data stored on the blockchain.
+# View Function
 
-** Importance
+## Definition
+
+A view function is a function that retrieves data from the blockchain
+without making any changes. It is used to read and display data stored
+on the blockchain.
+
+## Importance
+
 View functions are important in the Movement blockchain because:
-- They allow external applications to access and display data on the blockchain without direct access to the blockchain.
-- They improve the efficiency and security of the blockchain network.
 
-** Benefits
-- Create a GET API structure to display complex states of smart contracts.
-- Simplify the process of retrieving complex data, saving time and resources.
-- Significantly improve the usability of the Move blockchain.
-- Make the blockchain more accessible to developers.
+-   They allow external applications to access and display data on the
+    blockchain without direct access to the blockchain.
+-   They improve the efficiency and security of the blockchain network.
 
-** How to Use
-- Use the `#[view]` decorator to define a view function:
-#+begin_src move
+## Benefits
+
+-   Create a GET API structure to display complex states of smart
+    contracts.
+-   Simplify the process of retrieving complex data, saving time and
+    resources.
+-   Significantly improve the usability of the Move blockchain.
+-   Make the blockchain more accessible to developers.
+
+## How to Use
+
+-   Use the \`#\[view\]\` decorator to define a view function:
+
+``` move
 #[view]
 public fun get_todos(todo_address: address): vector<String> acquires TodoStore {
     borrow_global<TodoStore>(todo_address).todos
 }
-#+end_src
+```
 
-** Advantages
-- Retrieve complex states from smart contracts more efficiently.
-- Define functions that return specific data from smart contracts.
-- Provide a simple API for external invokers to retrieve data from the blockchain.
-- Receive specific required data instead of the entire database with each query.
+## Advantages
 
-** Conclusion
-Significantly improving its usability and accessibility. They help developers create more efficient applications by simplifying the process of retrieving data from the blockchain.
+-   Retrieve complex states from smart contracts more efficiently.
+-   Define functions that return specific data from smart contracts.
+-   Provide a simple API for external invokers to retrieve data from the
+    blockchain.
+-   Receive specific required data instead of the entire database with
+    each query.
 
-* Function Visibilities
-** Private
-- The functions can only be used within the module where they are defined.
-- Think of them as "module-only" functions. No other module or script can access them.
+## Conclusion
 
-#+begin_src move
+Significantly improving its usability and accessibility. They help
+developers create more efficient applications by simplifying the process
+of retrieving data from the blockchain.
+
+# Function Visibilities
+
+## Private
+
+-   The functions can only be used within the module where they are
+    defined.
+-   Think of them as "module-only" functions. No other module or script
+    can access them.
+
+``` move
 module movement::PrivModule {
     fun pri_func(): u8 {
         return 0;
@@ -90,13 +111,14 @@ module movement::PublModule {
         return result;
     }
 }
-#+end_src
+```
 
-** Public
-- The functions can be used by any other module or script.
-- They are like =open to everyone= functions.
+## Public
 
-#+begin_src move
+-   The functions can be used by any other module or script.
+-   They are like `open to everyone` functions.
+
+``` move
 module movement::PrivModule {
     use std::debug::print;
 
@@ -120,12 +142,15 @@ module movement::PublModule {
         return 0
     }
 }
-#+end_src
+```
 
-** Public(friend)
-- The functions can be used by the module where they are defined and by specific modules listed as "friends." - It’s like having "VIP access" that only selected friends can use these functions.
+## Public(friend)
 
-#+begin_src move
+-   The functions can be used by the module where they are defined and
+    by specific modules listed as "friends." - It’s like having "VIP
+    access" that only selected friends can use these functions.
+
+``` move
 module movement::PrivModule {
     use std::debug::print;
 
@@ -145,11 +170,13 @@ module movement::PublModule {
         return 0
     }
 }
-#+end_src
+```
 
-To allow =priv_module= to call =public(friend)= from within =pub_module=, we need to add =priv_module= to the friend list of =pub_module= by doing the following:
+To allow `priv_module` to call `public(friend)` from within
+`pub_module`, we need to add `priv_module` to the friend list of
+`pub_module` by doing the following:
 
-#+begin_src move
+``` move
 module movement::priv_module {
     use std::debug::print;
 
@@ -173,14 +200,15 @@ module movement::pub_module {
         return 0
     }
 }
-#+end_src
+```
 
-- Running test on terminal:
-#+begin_src sh
+-   Running test on terminal:
+
+``` bash
 movement move test -f priv_module
-#+end_src
+```
 
-#+begin_src sh
+``` bash
 Running Move unit tests
 [debug] 0
 [ PASS ] 0x1::priv_module::test_call_public_func
@@ -188,14 +216,18 @@ Test result: OK. Total tests: 1; passed: 1; failed: 0
 {
   "Result": "Success"
 }
-#+end_src
+```
 
-** Entry
-- These are special functions where the Move program starts running or where the user can call into the contract.
-- You can combine =entry= with =public= or =public(friend)= to specify who can initiate execution.
+## Entry
+
+-   These are special functions where the Move program starts running or
+    where the user can call into the contract.
+-   You can combine `entry` with `public` or `public(friend)` to specify
+    who can initiate execution.
 
 Example:
-#+begin_src move
+
+``` move
 module movement::function_visibilities {
     use std::string::utf8;
     use std::debug::print;
@@ -212,15 +244,17 @@ module movement::function_visibilities {
         print(&utf8(b"transfer"));
     }
 }
-#+end_src
+```
 
-- Running test on terminal:
-#+begin_src sh
+-   Running test on terminal:
+
+``` bash
 movement move publish
-#+end_src
+```
 
-- Result
-#+begin_src json
+-   Result
+
+``` json
 {
   "Result": {
     "transaction_hash": "0x995bff9d25cbb2863b1171d097e3af93c2c1867b0325ceeb1bd3ec44c841270a",
@@ -234,17 +268,17 @@ movement move publish
     "vm_status": "Executed successfully"
   }
 }
-#+end_src
+```
 
+-   Call Entry Function
 
-- Call Entry Function
-#+begin_src sh :results output :session share :async true
+``` bash
 movement move run --function-id 'default::FunctionVisibilities::internal_transfer'
 movement move run --function-id 'default::FunctionVisibilities::pub_transfer'
 movement move run --function-id 'default::FunctionVisibilities::transfer'
-#+end_src
+```
 
-#+begin_src json
+``` json
 {
   "Result": {
     "transaction_hash": "0xdf1e9661d7408034273fa49a8cecb4ca7acc2656705b348e0aee76a2a4799ce7",
@@ -258,4 +292,4 @@ movement move run --function-id 'default::FunctionVisibilities::transfer'
     "vm_status": "Executed successfully"
   }
 }
-#+end_src
+```

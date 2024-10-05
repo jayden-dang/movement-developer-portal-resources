@@ -1,48 +1,59 @@
-#+TITLE: Conditionals & Loops
+# Table of Contents
 
-* Table of Contents :toc:
-- [[#summary][Summary]]
-- [[#conditionals-in-move][Conditionals in Move]]
-  - [[#basic-syntax][Basic Syntax]]
-  - [[#key-points][Key Points]]
-  - [[#multiple-conditions][Multiple Conditions]]
-- [[#loops][Loops]]
-  - [[#while-loops][While Loops]]
-  - [[#for-loops][For Loops]]
-  - [[#infinite-loops][Infinite Loops]]
-  - [[#example-sum-of-first-n-natural-numbers][Example: Sum of First N Natural Numbers]]
+-   [Summary](#summary)
+-   [Conditionals in Move](#conditionals-in-move)
+    -   [Basic Syntax](#basic-syntax)
+    -   [Key Points](#key-points)
+    -   [Multiple Conditions](#multiple-conditions)
+-   [Loops](#loops)
+    -   [While Loops](#while-loops)
+    -   [For Loops](#for-loops)
+    -   [Infinite Loops](#infinite-loops)
+    -   [Example: Sum of First N Natural
+        Numbers](#example-sum-of-first-n-natural-numbers)
 
-* Summary
-- Conditionals in Move use `if-else` statements with boolean conditions and required curly braces.
-- Multiple conditions can be chained using `else if`.
-- Move supports three types of loops: `while`, `for`, and infinite (`loop`).
-- While loops execute code as long as a condition is true.
-- For loops iterate over a range of values.
-- Infinite loops use the `loop` keyword and continue until explicitly broken.
+# Summary
 
-* Conditionals in Move
-Conditionals are fundamental control structures in programming that allow you to execute different code based on certain conditions. In move, the most common conditional structure is the if-else statement.
+-   Conditionals in Move use \`if-else\` statements with boolean
+    conditions and required curly braces.
+-   Multiple conditions can be chained using \`else if\`.
+-   Move supports three types of loops: \`while\`, \`for\`, and infinite
+    (\`loop\`).
+-   While loops execute code as long as a condition is true.
+-   For loops iterate over a range of values.
+-   Infinite loops use the \`loop\` keyword and continue until
+    explicitly broken.
 
-** Basic Syntax
+# Conditionals in Move
+
+Conditionals are fundamental control structures in programming that
+allow you to execute different code based on certain conditions. In
+move, the most common conditional structure is the if-else statement.
+
+## Basic Syntax
+
 The basic syntax of an if-else statement in Move is as follows:
 
-#+begin_src move
+``` move
 if (condition) {
     // code to execute if condition is true
 } else {
     // code to execute if condition is false
 }
-#+end_src
+```
 
-** Key Points
-- The condition must be a boolean expression.
-- Curly braces {} are required, even if the block contains only one line of code.
-- The else block is optional.
+## Key Points
 
-** Multiple Conditions
+-   The condition must be a boolean expression.
+-   Curly braces {} are required, even if the block contains only one
+    line of code.
+-   The else block is optional.
+
+## Multiple Conditions
+
 You can chain multiple conditions using else if:
 
-#+begin_src move
+``` move
 if (condition1) {
     // code for condition1
 } else if (condition2) {
@@ -50,45 +61,55 @@ if (condition1) {
 } else {
     // code if no condition is true
 }
-#+end_src
+```
 
-* Loops
-Loops are essential control structures in programming that allow you to repeat a block of code multiple times. In Move, there are three main types of loops: while loops, for loops, and loop (infinite loop).
+# Loops
 
-** While Loops
-While loops execute a block of code as long as a specified condition is true.
+Loops are essential control structures in programming that allow you to
+repeat a block of code multiple times. In Move, there are three main
+types of loops: while loops, for loops, and loop (infinite loop).
 
-#+begin_src move
+## While Loops
+
+While loops execute a block of code as long as a specified condition is
+true.
+
+``` move
 while (condition) {
     // code to be executed
 }
-#+end_src
+```
 
-** For Loops
+## For Loops
+
 For loops are used to iterate over a range of values.
 
-#+begin_src move
+``` move
 for (i in 1..n) {
     // code to be executed
 }
-#+end_src
+```
 
-** Infinite Loops
-The 'loop' keyword creates an infinite loop that continues until explicitly broken.
+## Infinite Loops
 
-#+begin_src move
+The 'loop' keyword creates an infinite loop that continues until
+explicitly broken.
+
+``` move
 loop {
     // code to be executed
     if (condition) {
         break;
     }
 }
-#+end_src
+```
 
-** Example: Sum of First N Natural Numbers
-The code below demonstrates how to calculate the sum of the first N natural numbers using different types of loops in Move:
+## Example: Sum of First N Natural Numbers
 
-#+begin_src move
+The code below demonstrates how to calculate the sum of the first N
+natural numbers using different types of loops in Move:
+
+``` move
 module movement::loops {
     use std::vector;
 
@@ -154,15 +175,17 @@ module movement::loops {
         debug::print(&sum_using_vector(n));
     }
 }
-#+end_src
+```
 
-> Running test:
-#+begin_src sh
+\> Running test:
+
+``` bash
 movement move test -f test_sum_functions
-#+end_src
+```
 
-> Result:
-#+begin_src sh
+\> Result:
+
+``` bash
 Running Move unit tests
 [debug] 55
 [debug] 55
@@ -173,4 +196,4 @@ Test result: OK. Total tests: 1; passed: 1; failed: 0
 {
   "Result": "Success"
 }
-#+end_src
+```
