@@ -1,7 +1,3 @@
----
-title: Basic Collection Resource
----
-
 # Table of Content
 
 -   [Hello world Contract](#hello-world-contract)
