@@ -26,17 +26,23 @@ A collection of Move language code examples and developer portal sample implemen
   + [[./sources/advanced/local_global_resource][Local Storage & Global Storage Operations]]
   + [[./sources/advanced/writing_reading_detroying_resource][Writing/Reading/Detroying Resources to user account]]
   + [[./sources/advanced/resource_group][Resource Group]]
-  + Events
-  + Objects
-  + Smart Vector & Smart Table
+  + [[./sources/advanced/events][Events]]
+  + [[./sources/advanced/objects][Objects]]
+  + [[./sources/advanced/smart_table_smart_vector][Smart Vector & Smart Table]]
 
 - Overview:
 
-| Main        | Topic                                    | Description |
-| [[./sources/basic][Get started]] | [[./sources/basic/data_type][Data Type]]                                |             |
-|             | [[./sources/basic/functions_visibilities][Functions, view Functions & Visibilities]] |             |
-|             | [[./sources/basic/resources_abilities][Resources on Move & Ability of Resource]]  |             |
-|             | [[./sources/basic/conditional_loops][Conditionals & Loops]]                     |             |
-|             | [[./sources/basic/constants_error_handling][Constants & Error Handling]]               |             |
-|             | [[./sources/basic/generic_type][Generics Types]]                           |             |
-|             | [[./sources/basic/unit_testing][Unit Testing]]                             |             |
+| Main          | Topic                                               | Description |
+| [[./sources/basic][Get started]]   | [[./sources/basic/data_type][Data Type]]                                           |             |
+|               | [[./sources/basic/functions_visibilities][Functions, view Functions & Visibilities]]            |             |
+|               | [[./sources/basic/resources_abilities][Resources on Move & Ability of Resource]]             |             |
+|               | [[./sources/basic/conditional_loops][Conditionals & Loops]]                                |             |
+|               | [[./sources/basic/constants_error_handling][Constants & Error Handling]]                          |             |
+|               | [[./sources/basic/generic_type][Generics Types]]                                      |             |
+|               | [[./sources/basic/unit_testing][Unit Testing]]                                        |             |
+| [[./sources/advanced][Move Advanced]] | [[./sources/advanced/local_global_resource][Local Storage & Global Storage Operations]]           |             |
+|               | [[./sources/advanced/writing_reading_detroying_resource][Writing/Reading/Detroying Resources to user account]] |             |
+|               | [[./sources/advanced/resource_group][Resource Group]]                                      |             |
+|               | [[./sources/advanced/events][Events]]                                              |             |
+|               | [[./sources/advanced/objects][Objects]]                                             |             |
+|               | [[./sources/advanced/smart_table_smart_vector][Smart Vector & Smart Table]]                                                                                    |             |
