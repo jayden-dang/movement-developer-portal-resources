@@ -52,7 +52,7 @@ module movement::events_module {
     }
 
     public entry fun remove_resource_from_global_storage(account: &signer) acquires GlobalData {
-        let rev = move_from<GlobalData>(address_of(account));
+        move_from<GlobalData>(address_of(account));
     }
 
     #[test(account = @0x1)]

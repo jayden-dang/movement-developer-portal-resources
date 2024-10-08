@@ -1,3 +1,5 @@
-/build/
 /.aptos/
 *.DS_Store
+/move-core/move-advanced/build/*
+/move-core/move-basic/build/*
+/move-core/nft-factory/build/*

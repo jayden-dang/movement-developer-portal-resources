@@ -1,16 +1,12 @@
 [package]
-name = "developer_portal"
+name = "move-advanced"
 version = "1.0.0"
-authors = [
-  "Jayden Dang <jayden.vu@movementlabs.xyz>"
-]
-license = "MIT"
+authors = []
 
 [addresses]
-movement = "0xa68f62fad2c868af5ba6730916167c3072d10d32e6faadd0238ba4e25d5ed6f1"
+movement = "0x1"
 
 [dev-addresses]
-# movement = "0x1"
 
 [dependencies.AptosFramework]
 git = "https://github.com/aptos-labs/aptos-core.git"
