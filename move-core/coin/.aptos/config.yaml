@@ -1,0 +1,9 @@
+---
+profiles:
+  default:
+    network: Custom
+    private_key: "0x65bd0a8e0bfef74a389072ecc50349e829bb9fcc442f89331ce8f4a1548b922a"
+    public_key: "0xf269345dda6e213699ca67d472527179387e7d447e6fe06921eb736aaeee3ffb"
+    account: 0c2aeeb615661a37d8d033003b3f674370483228a9b20116306aeb12600f78f2
+    rest_url: "https://aptos.testnet.porto.movementlabs.xyz/v1"
+    faucet_url: "https://faucet.testnet.porto.movementnetwork.xyz/"

@@ -1,0 +1,21 @@
+[package]
+name = "coin-tutorial"
+version = "1.0.0"
+authors = []
+
+[addresses]
+movement = "0x0c2aeeb615661a37d8d033003b3f674370483228a9b20116306aeb12600f78f2"
+
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-core.git"
+rev = "mainnet"
+subdir = "aptos-move/framework/aptos-framework"
+
+[dependencies.AptosTokenObjects]
+git = "https://github.com/aptos-labs/aptos-core.git"
+rev = "mainnet"
+subdir = "aptos-move/framework/aptos-token-objects"
+
+[dev-dependencies]

@@ -9,34 +9,25 @@ A collection of Move language code examples and developer portal sample implemen
 #+end_quote
 
 
-- [[./sources/basic][Get started (Basic)]]
-  + [[./sources/basic/data_type][Data Type]]
-    + [[./sources/basic/data_type/README.org][Integer]]
-    + [[./sources/basic/data_type/boolean_type.move][Boolean]]
-    + [[./sources/basic/data_type/address_signer.move][Address & Signer]]
-    + [[./sources/basic/data_type/string_vector.move][String & Vector]]
-    + [[./sources/basic/data_type/simple_map.move][Simple Map]]
-  + [[./sources/basic/functions_visibilities][Functions, view Functions & Visibilities]]
-  + [[./sources/basic/resources_abilities][Resources on Move & Ability of Resource]]
-  + [[./sources/basic/conditional_loops][Conditionals & Loops]]
-  + [[./sources/basic/constants_error_handling][Constants & Error Handling]]
-  + [[./sources/basic/generic_type][Generics Type]]
-  + [[./sources/basic/unit_testing][Unit Testing]]
-- [[./sources/advanced][Move Advanced]]
-  + [[./sources/advanced/local_global_resource][Local Storage & Global Storage Operations]]
-  + [[./sources/advanced/writing_reading_detroying_resource][Writing/Reading/Detroying Resources to user account]]
-  + [[./sources/advanced/resource_group][Resource Group]]
-  + Events
-  + Objects
-  + Smart Vector & Smart Table
+- [[./move-core/move-basic][Get started (Basic)]]
+  + [[./move-core/move-basic/sources/data_type][Data Type]]
+    + [[./move-core/move-basic/sources/data_type/README.org][Integer]]
+    + [[./move-core/move-basic/sources/data_type/boolean_type.move][Boolean]]
+    + [[./move-core/move-basic/sources/data_type/address_signer.move][Address & Signer]]
+    + [[./move-core/move-basic/sources/data_type/string_vector.move][String & Vector]]
+    + [[./move-core/move-basic/sources/data_type/simple_map.move][Simple Map]]
+  + [[./move-core/move-basic/sources/functions_visibilities][Functions, view Functions & Visibilities]]
+  + [[./move-core/move-basic/sources/resources_abilities][Resources on Move & Ability of Resource]]
+  + [[./move-core/move-basic/sources/conditional_loops][Conditionals & Loops]]
+  + [[./move-core/move-basic/sources/constants_error_handling][Constants & Error Handling]]
+  + [[./move-core/move-basic/sources/generic_type][Generics Type]]
+  + [[./move-core/move-basic/sources/unit_testing][Unit Testing]]
+- [[./move-core/move-advanced][Move Advanced]]
+  + [[./move-core/move-advanced/sources/local_global_resource][Local Storage & Global Storage Operations]]
+  + [[./move-core/move-advanced/sources/writing_reading_detroying_resource][Writing/Reading/Detroying Resources to user account]]
+  + [[./move-core/move-advanced/sources/resource_group][Resource Group]]
+  + [[./move-core/move-advanced/sources/events][Events]]
+  + [[./move-core/move-advanced/sources/objects][Objects]]
+  + [[./move-core/move-advanced/sources/smart_table_smart_vector][Smart Vector & Smart Table]]
 
-- Overview:
-
-| Main        | Topic                                    | Description |
-| [[./sources/basic][Get started]] | [[./sources/basic/data_type][Data Type]]                                |             |
-|             | [[./sources/basic/functions_visibilities][Functions, view Functions & Visibilities]] |             |
-|             | [[./sources/basic/resources_abilities][Resources on Move & Ability of Resource]]  |             |
-|             | [[./sources/basic/conditional_loops][Conditionals & Loops]]                     |             |
-|             | [[./sources/basic/constants_error_handling][Constants & Error Handling]]               |             |
-|             | [[./sources/basic/generic_type][Generics Types]]                           |             |
-|             | [[./sources/basic/unit_testing][Unit Testing]]                             |             |
+- [[./move-core/nft-factory][Move Advanced]]

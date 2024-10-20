@@ -3,11 +3,6 @@
 * Table of Contents :toc:
 - [[#address-object--create-object][Address Object & Create Object]]
 - [[#named-objects][Named Objects]]
-- [[#object-ownership--transfer-object][Object Ownership & Transfer Object]]
-- [[#object-permissions--objectrefs][Object Permissions & ObjectRefs]]
-- [[#using-extendref][Using ExtendRef]]
-- [[#using-transferref][Using TransferRef]]
-- [[#using-deleteref][Using DeleteRef]]
 
 * Address Object & Create Object
 *** =Summary=
@@ -321,8 +316,3 @@ module movement::object_module_entry {
   - =test_get_object_address=: Tests the =get_object_address= function
   - =test_get_object=: Tests the =get_value= function
   - =test_set_object=: Tests the =set_value= function
-* Object Ownership & Transfer Object
-* Object Permissions & ObjectRefs
-* Using ExtendRef
-* Using TransferRef
-* Using DeleteRef
