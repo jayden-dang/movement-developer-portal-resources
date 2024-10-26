@@ -1,11 +1,11 @@
 [package]
-name = "coin-tutorial"
+name = "movement"
 version = "1.0.0"
 authors = []
 
 [addresses]
-movement = "0x0c2aeeb615661a37d8d033003b3f674370483228a9b20116306aeb12600f78f2"
-source_addr = "_"
+source_addr = "0x01363fe73593c95955ee6e66f6777712deab016b99553c34b09d7b5a26e94e6b"
+movement = "da13b54da6309d2c27d5b2d4a9d25915b7a069e543c51d547f67206e24c86174"
 
 [dev-addresses]
 
@@ -14,9 +14,9 @@ git = "https://github.com/aptos-labs/aptos-core.git"
 rev = "mainnet"
 subdir = "aptos-move/framework/aptos-framework"
 
-[dependencies.AptosTokenObjects]
+[dependencies.AptosToken]
 git = "https://github.com/aptos-labs/aptos-core.git"
 rev = "mainnet"
-subdir = "aptos-move/framework/aptos-token-objects"
+subdir = "aptos-move/framework/aptos-token"
 
 [dev-dependencies]

@@ -2,6 +2,7 @@ module movement::mint_nft_by_resource_account {
     use std::string::{Self, String};
     use aptos_token_objects::collection;
     use aptos_token_objects::token::{Self, Token};
+    use aptos_framework::resource_account;
     use aptos_framework::object;
     use std::signer;
     use std::option;
@@ -23,6 +24,8 @@ module movement::mint_nft_by_resource_account {
         token_description: String,
     }
 
+    const SOURCE_ADDR: address = @source_addr;
+
     public entry fun create_collection(
         account: &signer,
         collection_name: String,
@@ -34,8 +37,8 @@ module movement::mint_nft_by_resource_account {
         token_description: String,
         seeds: vector<u8>
     ) {
-        let (resource, resource_cap) = create_resource_account(account, seeds);
-        let resource_signer_from_cap = create_signer_with_capability(&resource_cap);
+        let resource_cap_cap = resource_account::retrieve_resource_account_cap(caller, SOURCE_ADDR);
+        let resource_signer = account::create_signer_with_capability(&resource_cap);
         let account_addr = signer::address_of(account);
 
         // Token
