@@ -160,6 +160,7 @@ module movement::swap_token {
     ) acquires TokenPairMetadata, TokenPairReserve {
         assert!(is_pair_created<Xy, Y>(RESOURCE_ACCOUNT));
 
+        // -->>> Region:: START  --->>>  Check
         let amount_x = coin::value(&x_amount);
         let amount_y = coin::value(&y_amount);
 
@@ -175,6 +176,7 @@ module movement::swap_token {
                 (amount_x_optimal, amount_y)
             }
         };
+        // <<<-- Region:: END    <<<---  Check
 
         let left_x = coin::extract(&mut x, amount_x - a_x);
         let left_y = coin::extract(&mut x, amount_y - a_y);
@@ -188,7 +190,6 @@ module movement::swap_token {
         // <<<-- Region:: END    <<<---  Deposit Tokens
 
         let (lp, fee_amount) =
-
 
         let (amount_x, amount_y, coin_lp, fee_amount, coin_left_x, coin_left_y) =
 

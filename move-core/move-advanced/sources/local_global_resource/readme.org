@@ -149,13 +149,13 @@ Here's the =GlobalStorage= data after you initialize it using the =new_global= f
 
 For global data, you can only access it through these native functions provided by Move:
 
-| Operation | Description | Aborts? |
-| --- | --- | --- |
-| =move_to<T>(&signer,T)= | Publish =T= under =signer.address= | If =signer.address= already holds a =T= |
-| =move_from<T>(address): T= | Remove =T= from =address= and return it | If =address= does not hold a =T= |
-| =borrow_global_mut<T>(address): &mut T= | Return a mutable reference to the =T= stored under =address= | If =address= does not hold a =T= |
-| =borrow_global<T>(address): &T= | Return an immutable reference to the =T= stored under =address= | If =address= does not hold a =T= |
-| =exists<T>(address): bool= | Return =true= if a =T= is stored under =address= | Never |
+| Operation                             | Description                                                 | Aborts?                             |
+| ---                                   | ---                                                         | ---                                 |
+| =move_to<T>(&signer,T)=                 | Publish =T= under =signer.address=                              | If =signer.address= already holds a =T= |
+| =move_from<T>(address): T=              | Remove =T= from =address= and return it                         | If =address= does not hold a =T=        |
+| =borrow_global_mut<T>(address): &mut T= | Return a mutable reference to the =T= stored under =address=    | If =address= does not hold a =T=        |
+| =borrow_global<T>(address): &T=         | Return an immutable reference to the =T= stored under =address= | If =address= does not hold a =T=        |
+| =exists<T>(address): bool=              | Return =true= if a =T= is stored under =address=                  | Never                               |
 
 ** Example Code:
 #+begin_src move

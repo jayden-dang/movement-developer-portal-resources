@@ -4,3 +4,6 @@
 /move-core/move-basic/build/*
 /move-core/nft-factory/build/*
 /move-core/defi/build/*
+/move-core/fungible-asset/build/*
+**/.aptos/*
+**/build/*
